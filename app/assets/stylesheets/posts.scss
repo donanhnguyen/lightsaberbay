@@ -1,0 +1,248 @@
+// Place all the styles related to the api/posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//-post form
+.city-post-form-button {
+    padding: 7px;
+    font-size: 20px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(24, 86, 152);
+}
+.city-post-form-button:hover {
+    background-color: rgb(191, 68, 68);
+}
+.post-content {
+    font-size: 18px;
+    min-width: 300px;
+    min-height: 150px;
+    border-radius: 5px;
+}
+.post-subject {
+    font-size: 18px;
+    min-width: 300px;
+    border-radius: 5px;
+}
+.post-submit-button {
+    padding: 7px;
+    font-size: 18px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(24, 86, 152);
+}
+.post-submit-button:hover {
+    background-color: rgb(191, 68, 68);
+}
+.post-form-container {
+    color: rgb(0, 0, 0);
+    box-shadow: 1px 1px 2px 1px rgb(228, 228, 228);
+    padding: 4px;
+    background: linear-gradient(rgb(249, 249, 249), rgb(242, 246, 254));
+    min-height: 500px;
+    text-align: center;
+}
+.post-budget-container {
+    color: rgb(0, 0, 0);
+    box-shadow: 1px 1px 2px 1px rgb(228, 228, 228);
+    padding: 4px;
+    background: linear-gradient(rgb(249, 249, 249), rgb(242, 246, 254));
+    text-align: center;
+    margin-top: 10px;
+}
+.post-error-message {
+    font-size: 18px;
+    margin: auto;
+    color: rgb(255, 42, 42);
+}
+.post-category-dropdown {
+    font-size: 17px;
+    min-width: 300px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
+//post-index-items
+.post-index-item {
+    border-bottom: 1px solid rgb(199, 199, 199);
+    background: white;
+    box-shadow: 2px 2px 2px rgb(224, 233, 238);
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+}
+.post-delete-button {
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(255, 128, 128);
+}
+.post-delete-button:hover, .post-update-button:hover {
+    background-color: rgb(174, 32, 32);
+}
+.post-index-item-rating {
+    color: rgb(255, 174, 0);
+}
+.post-index-item-subject {
+    font-size: 25px;
+    color: rgb(89, 174, 244);
+}
+.post-stamp {
+    color: grey;
+    font-size: 15px;
+}
+.post-index-item-content {
+    max-width: 550px;
+    font-size: 17px;
+}
+
+.total-rating-container {
+    margin-left: 2px;
+}
+.total-rating-container h1 {
+    color: rgb(255, 174, 0);
+    margin-left: 5px;
+    font-size: 40px;
+    margin: 0;
+}
+.total-star-rating-list {
+    display: flex;
+    font-size: 32px;
+    margin: auto;
+    padding: 0;
+}
+.total-star-rating-list li {
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 1px rgb(194, 194, 194);
+    padding: 5px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.total-rating-star-circle {
+    background-color: rgb(255, 211, 66);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+}
+
+.not-logged-in-message {
+    margin: 0;
+    margin-left: 5px;
+}
+
+.number-of-reviews {
+    font-size: 18px;
+    margin: 0px;
+}
+
+//---post form styles
+
+input[type='radio'] {
+    display: none;
+}
+
+.star-rating-container {
+    width: 300px;
+    margin: auto;
+    padding: 5px;
+}
+
+.star-rating-list {
+    display: flex;
+    font-size: 30px;
+}
+
+.star-rating-list li {
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 1px rgb(121, 121, 121);
+}
+
+.star-rating-list li:hover {
+    color: rgb(255, 225, 0);
+    cursor: pointer;
+}
+
+.star-rating-list li.active, .star-rating-list li.secondary-active {
+    color: rgb(255, 225, 0);
+}
+
+.post-star-rating-list {
+    display: flex;
+    font-size: 25px;
+    padding: 0;
+}
+
+.post-star-rating-list li {
+    color: rgb(255, 204, 0);
+    padding: 2px;
+}
+//edit-form
+.post-update-form {
+    padding: 5px;
+}
+.post-update-form textarea, .post-update-form input[type="text"], .post-update-form select {
+    font-size: 17px;
+    border-radius: 5px;
+    min-width: 250px;
+}
+.post-update-form textarea {
+    min-height: 100px;
+}
+.post-update-button {
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(133, 133, 133);
+}
+//-mq
+@media screen and (max-width: 550px) {
+    .post-tabs ul {
+        display: block;
+    }
+    .total-star-rating-list {
+        font-size: 25px;
+    }
+    .total-rating-star-circle {
+        background-color: rgb(255, 211, 66);
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+    }
+}
+@media screen and (max-width: 450px) {
+    .post-content {
+        font-size: 14px;
+        min-width: 250px;
+    }
+    .post-subject {
+        font-size: 14px;
+        min-width: 250px;
+    }
+    .post-category-dropdown {
+        font-size: 14px;
+        min-width: 250px;
+    }
+    .star-rating-container {
+        width: 205px;
+    }
+    .star-rating-list {
+        font-size: 25px;
+        padding: 0;
+    }
+    .post-update-form textarea, .post-update-form input[type="text"] {
+        font-size: 15px;
+        min-width: 185px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .post-subject {
+        font-size: 14px;
+        min-width: 100px;
+    }
+    .post-category-dropdown {
+        font-size: 14px;
+        min-width: 100px;
+    }
+}

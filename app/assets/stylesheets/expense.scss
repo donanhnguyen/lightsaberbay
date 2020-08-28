@@ -1,0 +1,15 @@
+// Place all the styles related to the Expense controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.all-expenses h1 {
+    font-size: 18px;
+    color: rgb(25, 94, 172);
+}
+.all-expenses li {
+    box-shadow: 1px 1px 1px 2px gray;
+}
+.all-expenses ul {
+    padding: 2px;
+    font-size: 17px;
+}

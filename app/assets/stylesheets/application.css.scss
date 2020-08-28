@@ -1,0 +1,403 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+html {
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.815), rgba(192, 227, 245, 0.906));
+    min-height: 100%;
+}
+ul {
+    list-style: none;
+    margin: 0;
+}
+body {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    margin: 0;
+}
+button {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+}
+label {
+    padding: 7px;
+}
+input[type='text'], input[type='password'] {
+    font-size: 20px;
+    border-radius: 5px;
+}
+input[type='submit'] {
+    cursor: pointer;
+    text-shadow: 1px 1px 1px rgb(75, 75, 75);
+}
+a {
+    text-decoration: none;
+    color: rgb(1, 142, 218);
+}
+a:hover {
+    color: rgb(0, 173, 176);
+}
+.clearfix {
+    clear: both;
+}
+.error-message {
+    color: rgb(245, 58, 58);
+}
+.search-bar {
+    font-family: Questrial;
+    border-radius: 10px;
+}
+.nav-bar-container {
+    position: relative;
+    font-size: 24px;
+    width: 100%;
+    color: gray; 
+    min-height: 40px;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.tc-link {
+    font-family: Lemon;
+    font-size: 21px;
+}
+.nav-bar-list {
+    padding: 0;
+}
+.nav-bar-list li {
+    padding: 17px;
+    float: left;
+}
+.nav-link {
+    margin: 0;
+    padding: 7px;
+    color: rgb(108, 154, 238);
+    text-decoration: none;
+    border-radius: 25px;
+}
+.nav-link-hover:hover {
+    background-color: rgb(108, 154, 238);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+.session-link-hover:hover {
+    color: rgb(174, 206, 255);
+}
+.greeting-logged-in {
+    margin-left: 5px;
+    font-size: 20px;
+}
+.greeting-container {
+    background: image-url('budget.jpg') rgb(138, 169, 208);
+    background-size: 100% 100%;
+    padding: 100px;
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    animation: fadein 1.2s;
+    -moz-animation: fadein 1.2s; /* Firefox */
+    -webkit-animation: fadein 1.2s; /* Safari and Chrome */
+    -o-animation: fadein 1.2s; /* Opera */
+}
+//--fade effect start
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+//---fade effect end
+.footer {
+    text-align: center;
+    font-size: 15px;
+    padding: 25px;
+    color: gray;
+}
+
+.hide-this-shit {
+    display: none;
+}
+
+.search-container {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.search-list-item {
+    border: 1px solid blue;
+    margin: 0;
+    padding: 0;
+}
+
+.search-list-item:hover {
+  background-color: rgb(242, 242, 242);
+}
+
+.city-highlights {
+    font-family: 'Didact Gothic';
+    text-align: center;
+    color: rgb(108, 154, 238);
+    margin: 0;
+    padding: 10px;
+}
+.highlights-background {
+    background-color: white;
+    margin-left: 25px;
+    margin-right: 25px;
+    min-height: 370px;
+    box-shadow: 1px 1px 1px 1px rgb(215, 215, 215);
+}
+.highlights-container {
+    text-align: center;
+    margin: 5px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.highlights-container h1 {
+    color: rgb(25, 49, 94);
+    margin: 0;
+    font-size: 21px;
+}
+.single-highlight {
+    display: inline-block;
+    margin: 2px;
+    padding: 0;
+    border-radius: 10px;
+    width: 170px;
+    height: 170px;
+    background-size: 100% 100%;
+    opacity: 0.85;
+}
+.single-highlight:hover {
+    opacity: 1;
+}
+.highlight-info {
+    color: rgb(254, 161, 0);
+    margin: 0;
+    padding: 0;
+    font-size: 21px;
+}
+.single-budget {
+    box-shadow: 1px 0px 1px 1px gray;
+    background: rgba(247, 250, 252, 0.934);
+    margin: auto;
+}
+.single-budget:hover {
+    color: blue;
+}
+.pie-slice {
+    opacity: 0.92;
+}
+.pie-slice:hover {
+    opacity: 1;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+//-media queries
+@media screen and (min-width: 2000px) {
+    body {
+        width: 1400px;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 815px) {
+    .greeting-container {
+        padding: 85px;
+        font-size: 20px;
+    }
+}
+@media screen and (max-width: 620px) {
+    .highlights-container {
+        display: block;
+    }
+    .highlights-background {
+        min-height: 750px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .greeting-container {
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 380px) {
+    .greeting-container {
+        padding: 50px;
+        font-size: 12px;
+    }
+    input[type='text'], input[type='password'] {
+        font-size: 14px;
+    }
+    .nav-bar-container, .tc-link {
+        font-size: 18px;
+    }
+}
+
+
+// pie chart
+
+.legend {
+    font-size: 20px;
+  }
+  rect {
+    cursor: pointer; 
+    stroke-width: 1;
+    border-radius: 50px;
+  }
+  rect.disabled {
+    fill: transparent !important;
+  }
+  
+  #pie-chart {
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    // width: 1200px;
+  }
+
+  #chart {
+    height: 800px;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    width: 1200px;
+  }
+  
+  .tooltip {
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0 5px #323232;
+    color: rgb(0, 10, 101);
+    display: none;
+    font-size: 20px;
+    left: 130px;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    top: 95px;
+    min-width: 80px;
+    z-index: 10;
+  }
+
+  .loader {
+    color: #d0d0d0;
+    font-size: 200px;
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    margin: 72px auto;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+    animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+  }
+  @-webkit-keyframes load6 {
+    0% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    5%,
+    95% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    10%,
+    59% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+    }
+    20% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+    }
+    38% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+    }
+    100% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+  }
+  @keyframes load6 {
+    0% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    5%,
+    95% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    10%,
+    59% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+    }
+    20% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+    }
+    38% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+    }
+    100% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+  }
+  @-webkit-keyframes round {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes round {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
