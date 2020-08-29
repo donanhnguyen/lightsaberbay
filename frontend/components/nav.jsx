@@ -27,13 +27,15 @@ import {
 
                             <ul class="nav-bar-list left">
                                 <li><Link class={'tc-link nav-link nav-link-hover'} to="/">Home</Link></li>
-                                <li> <Link class={'nav-link nav-link-hover'} to="/your_budgets">Your Budgets</Link></li>        
+                                <li> <Link class={'nav-link nav-link-hover'} to="/marketplace">Marketplace</Link></li>   
+                                <li> <Link class={'nav-link nav-link-hover'} to="/forsale">For Sale</Link></li>          
                             </ul>
                             
                             <ul class="nav-bar-list right">
                                 <li>
                                     <button class={'logout-button'} onClick={this.logout.bind(this)}>Logout</button>
                                 </li>
+                                <li> <Link class={'nav-link nav-link-hover'} to="/cart">Cart</Link></li>          
                             </ul>
 
                         <div class="clearfix"></div>

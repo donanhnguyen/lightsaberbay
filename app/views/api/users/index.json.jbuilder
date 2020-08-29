@@ -1,1 +1,1 @@
-json.array! @all_users, :id, :username
+json.array! @all_users, :id, :username, :credits, :cart

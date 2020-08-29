@@ -10,36 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181024011607) do
+ActiveRecord::Schema.define(version: 20200829151808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "budgets", force: :cascade do |t|
-    t.string "month", null: false
-    t.integer "year", null: false
+  create_table "lightsabers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "type", null: false
+    t.string "color", null: false
+    t.boolean "forsale", null: false
     t.bigint "user_id", null: false
-    t.integer "salary", null: false
+    t.bigint "marketplace_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_budgets_on_user_id"
+    t.index ["marketplace_id"], name: "index_lightsabers_on_marketplace_id"
+    t.index ["user_id"], name: "index_lightsabers_on_user_id"
   end
 
-  create_table "expenses", force: :cascade do |t|
-    t.string "category", null: false
-    t.string "description", null: false
-    t.string "date", null: false
-    t.integer "amount", null: false
-    t.bigint "budget_id", null: false
+  create_table "marketplaces", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["budget_id"], name: "index_expenses_on_budget_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
+    t.integer "credits", null: false
+    t.string "cart"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["session_token"], name: "index_users_on_session_token", unique: true

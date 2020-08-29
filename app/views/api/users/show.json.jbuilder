@@ -1,3 +1,3 @@
 json.id @user.id
 json.username @user.username
-json.budgets @user.budgets
+json.lightsabers @user.lightsabers
