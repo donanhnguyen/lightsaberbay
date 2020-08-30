@@ -8,34 +8,38 @@ class Api::LightsabersController < ApplicationController
 
     def create
       @user = User.find(params[:user_id])
-      @budget = @user.budgets.create(budget_params)
-      if @budget.save
+      @lightsaber = @user.lightsabers.create(lightsaber_params)
+      if @lightsaber.save
         render :show
       else
-        render json: @budget.errors, status: :unprocessable_entity
+        render json: @lightsaber.errors, status: :unprocessable_entity
       end
     end
 
     def update
-      @budget = Budget.find(params[:id])
-      @budget.update_attributes(budget_params)
+      @lightsaber = Lightsaber.find(params[:id])
+      @lightsaber.update_attributes(lightsaber)
       render :show
     end
 
     def destroy
-      @budget = Budget.find(params[:id])
-      @budget.destroy
+      @lightsaber = Lightsaber.find(params[:id])
+      @lightsaber.destroy
       render :show
     end
 
     private
 
-    def budget_params
-      params.require(:budget).permit(
-        :month,
-        :year,
-        :salary,
-        :user_id,
+    def lightsaber_params
+      params.require(:lightsaber).permit(
+        :name,
+        :style,
+        :price,
+        :color,
+        :forsale,
+        :lat,
+        :lng,
+        :user_id
       )
     end
 end

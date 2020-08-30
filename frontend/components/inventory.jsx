@@ -6,7 +6,7 @@ export default function Inventory () {
 
     return (
         <div>
-            inventory is here
+            currentUser.lightsabers
         </div>
     )
 }

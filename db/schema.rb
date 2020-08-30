@@ -17,16 +17,15 @@ ActiveRecord::Schema.define(version: 20200830053935) do
 
   create_table "lightsabers", force: :cascade do |t|
     t.string "name", null: false
-    t.string "type", null: false
+    t.string "style", null: false
     t.string "color", null: false
+    t.integer "price", null: false
     t.boolean "forsale", null: false
     t.bigint "user_id", null: false
-    t.bigint "marketplace_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "lat"
     t.float "lng"
-    t.index ["marketplace_id"], name: "index_lightsabers_on_marketplace_id"
     t.index ["user_id"], name: "index_lightsabers_on_user_id"
   end
 

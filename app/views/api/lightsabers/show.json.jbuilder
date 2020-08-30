@@ -1,0 +1,11 @@
+json.name @lightsaber.name
+json.color @lightsaber.color
+json.style @lightsaber.style
+json.price @lightsaber.price
+json.forsale @lightsaber.forsale
+json.user_id @lightsaber.user_id
+json.lat @lightsaber.lat
+json.lng @lightsaber.lng
+json.created_at @lightsaber.created_at
+json.updated_at @lightsaber.updated_at
+json.user @lightsaber.user.username

@@ -31,7 +31,6 @@ class App extends React.Component {
         return (
             <div>
                     <NavContainer />
-
                     <Route exact path="/" component={GreetingContainer} />
 
                     <Route path="/marketplace" component={Marketplace} />
