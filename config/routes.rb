@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show, :index] do 
       resources :lightsabers, only: [:create, :index, :show, :destroy, :update,] 
     end
+    resources :users, only: [:create, :show, :index] do
+      resources :messages, only: [:create, :index, :show] 
+    end
     resource :session, only: [:create, :destroy, :show, :index]
     resources :lightsabers, only: [:create, :index, :show, :destroy, :update,] 
   end

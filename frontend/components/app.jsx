@@ -20,6 +20,7 @@ import SessionFormContainer from './session_form_container';
 
 import Marketplace from './marketplace';
 import Inventory from './inventory';
+import Messages from './messages';
 
 class App extends React.Component {
 
@@ -32,9 +33,9 @@ class App extends React.Component {
             <div>
                     <NavContainer />
                     <Route exact path="/" component={GreetingContainer} />
-
                     <Route path="/marketplace" component={Marketplace} />
                     <Route path="/Inventory" component={Inventory} />
+                    <Route path="/messages" component={Messages} />
 
                     <AuthRoute path="/login" component={SessionFormContainer} />
                     <AuthRoute path="/signup" component={SessionFormContainer} />
