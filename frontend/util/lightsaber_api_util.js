@@ -1,21 +1,21 @@
-export const fetchLightsabers = () => {
+export const fetchAllLightsabers = () => {
     return $.ajax({
         method: 'GET',
         url: `api/lightsabers`
     })
 };
 
-// export const createBudget = (user_id, budget) => (
-//     $.ajax({
-//         method: 'POST',
-//         url: `api/users/${user_id}/budgets`,
-//         data: {budget}
-//     })
-// );
+export const fetchUserLightsabers = (user_id) => {
+    return $.ajax({
+        method: 'GET',
+        url: `api/users/${user_id}/lightsabers`
+    })
+};
 
-// export const deleteBudget = (user_id, budget_id) => (
-//     $.ajax({
-//         method: 'DELETE',
-//         url: `api/users/${user_id}/budgets/${budget_id}`
-//     })
-// )
+export const updateLightsaber = (lightsaber, user_id, lightsaber_id) => (
+    $.ajax({
+        method: 'PUT',
+        url: `api/users/${user_id}/lightsabers/${lightsaber_id}`,
+        data: {lightsaber}
+    })
+)

@@ -1,7 +1,7 @@
 class Api::LightsabersController < ApplicationController
     def index
-        @user = User.find(params[:user_id])
-        @all_users_lightsabers = @user.lightsabers
+        # @user = User.find(params[:user_id])
+        # @all_users_lightsabers = @user.lightsabers
         @all_lightsabers = Lightsaber.all
         render :index
     end

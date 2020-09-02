@@ -7,6 +7,7 @@ json.array! @all_lightsabers do |lightsaber|
     json.lat lightsaber.lat
     json.lng lightsaber.lng
     json.user_id lightsaber.user_id
+    json.owner lightsaber.user.username
     json.created_at lightsaber.created_at
     json.updated_at lightsaber.updated_at
 end
