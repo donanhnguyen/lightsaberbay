@@ -8,4 +8,4 @@ json.lat @lightsaber.lat
 json.lng @lightsaber.lng
 json.created_at @lightsaber.created_at
 json.updated_at @lightsaber.updated_at
-json.user @lightsaber.user.username
+json.owner @lightsaber.user.username

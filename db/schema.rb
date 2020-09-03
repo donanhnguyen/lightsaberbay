@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20200831024821) do
     t.string "password_digest", null: false
     t.string "session_token", null: false
     t.integer "credits", null: false
-    t.string "cart"
+    t.text "cart", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["session_token"], name: "index_users_on_session_token", unique: true

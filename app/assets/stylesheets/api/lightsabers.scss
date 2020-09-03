@@ -1,3 +1,93 @@
 // Place all the styles related to the api/lightsabers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// Marketplace Map
+
+#map-container {
+    margin: auto;
+    width: 90%;
+    height: 650px;
+    border: 1px solid black;
+}
+
+#marketplace-container {
+    width: 98%;
+    min-height: 500px;
+    margin: auto;
+}
+
+.all-lightsabers-container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    margin: 0 auto;
+    max-width: 97%;
+}
+
+.lightsaber-item{
+    position: relative;
+    border: 3px solid white;
+    border-radius: 50px;
+    width: 80%;
+    height: 300px;
+    opacity: 0.80;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-size: 100% 100%;
+    font-size: 8px;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.lightsaber-item:hover {
+    opacity: 1.0;
+}
+.lightsaber-item-row {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.yellowsingle {
+    background-image: image-url('yellowsingle.jpg');
+}
+.yellowdouble {
+    background-image: image-url('yellowdouble.jpg');
+}
+.redsingle {
+    background-image: image-url('redsingle.jpg');
+}
+.reddouble {
+    background-image: image-url('reddouble.jpg');
+}
+.bluesingle {
+    background-image: image-url('bluesingle.jpg');
+}
+.bluedouble {
+    background-image: image-url('bluedouble.jpg');
+}
+.purplesingle {
+    background-image: image-url('purplesingle.jpg');
+}
+.greensingle {
+    background-image: image-url('greensingle.jpg');
+}
+.greendouble {
+    background-image: image-url('greendouble.jpg');
+}
+
+
+.filters-bar {
+    border: 1px solid white;
+}
+
+.add-to-cart-button {
+    margin-top: 80px;
+    padding: 7px;
+    font-size: 15px;
+    border-radius: 5px;
+    width: 100px;
+    color: white;
+    background-color: rgb(24, 74, 150);
+}
+.add-to-cart-button:hover {
+    background-color: rgb(230, 91, 91);
+}
