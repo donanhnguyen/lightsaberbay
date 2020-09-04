@@ -30,6 +30,9 @@ class Greeting extends React.Component {
     }
 
     render () {
+        if (this.props.currentUser) {
+           localStorage.setItem("currentLoggedInUser", JSON.stringify(this.props.currentUser));
+        }
         return (
             <div>
                 {this.currentUserHeading()}

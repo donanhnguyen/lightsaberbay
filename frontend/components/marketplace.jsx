@@ -27,7 +27,11 @@ export default function Marketplace() {
         fetchAllTheLightsabers(dispatch);
     }, [])
 
-    const displayAllLightsabers = state.map((lightsaber) => (<div><Lightsaber lightsaber={lightsaber}/></div>));
+    const displayAllLightsabersForSale = state.map((lightsaber) => {
+        if (lightsaber.forsale) {
+            return <div><Lightsaber lightsaber={lightsaber}/></div>;
+        }
+    });
 
     return (
         <div id="marketplace-container">
@@ -36,7 +40,7 @@ export default function Marketplace() {
                 Search Filters go here:
             </div>
             <div class="all-lightsabers-container">
-                {displayAllLightsabers}
+                {displayAllLightsabersForSale}
             </div>
             
         </div>
