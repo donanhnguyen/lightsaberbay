@@ -1,6 +1,6 @@
 import React, { Component, useState, useReducer, useEffect} from 'react'
 import CreateSaleForm  from './createSaleForm';
-import Lightsaber from './lightsaber';
+import UserLightsaber from './user_lightsaber';
 import * as LightsaberAPIUtil from '../util/lightsaber_api_util';
 
 const lightsaberReducer = (state, action) => {
@@ -12,26 +12,49 @@ const lightsaberReducer = (state, action) => {
     }
 }
 
-// function fetchAllTheUserLightsabers (dispatch) {
-//     LightsaberAPIUtil.fetchUserLightsabers(user_id).then((all_lightsabers) =>  {
-//         dispatch({type: "fetchAllUserLightsabers", payload: all_lightsabers})
-//     })
-// };
+function fetchAllTheUserLightsabers (dispatch, user_id) {
+    LightsaberAPIUtil.fetchUserLightsabers(user_id).then((all_lightsabers) =>  {
+        dispatch({type: "fetchAllUserLightsabers", payload: all_lightsabers})
+    })
+};
 
 export default function Inventory () {
     var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
     var [state, dispatch] = useReducer(lightsaberReducer, []);
 
-    // useEffect(() => {
-    //     fetchAllTheUserLightsabers(dispatch);
-    // }, [])
+    useEffect(() => {
+        fetchAllTheUserLightsabers(dispatch, localStorageCurrentUser.id);
+    }, [])
     
+    const displayLightsabersForSale = state.map((lightsaber) => {
+        if (lightsaber.forsale) {
+            return <div><UserLightsaber lightsaber={lightsaber}/></div>;
+        }
+    });
+
+    const displayLightsabersNotForSale = state.map((lightsaber) => {
+        if (!lightsaber.forsale) {
+            return <div><UserLightsaber lightsaber={lightsaber}/></div>;
+        }
+    });
+
     return (
         <div>
+            <h1>Inventory for Sale:</h1>
             <div class="all-lightsabers-container">
+                {displayLightsabersForSale}
+            </div>
+            
+            <div class="clearfix"></div>
+
+            <h1>Inventory Not for Sale:</h1>
+            <div class="all-lightsabers-container">
+                {displayLightsabersNotForSale}
             </div>
 
-            <CreateSaleForm />
+            <div class="clearfix"></div>
+
+            <CreateSaleForm currentState={state} />
         </div>
     )
 }

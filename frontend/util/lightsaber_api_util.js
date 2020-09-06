@@ -20,10 +20,10 @@ export const updateUsersLightsaber = (lightsaber, user_id, lightsaber_id) => (
     })
 );
 
-export const sellLightsaber = (lightsaber, lightsaber_id) => (
-    $.ajax({
-        method: 'PUT',
-        url: `api/lightsabers/${lightsaber_id}`,
-        data: {lightsaber}
-    })
-);
+// export const sellLightsaber = (lightsaber, lightsaber_id) => (
+//     $.ajax({
+//         method: 'PUT',
+//         url: `api/lightsabers/${lightsaber_id}`,
+//         data: {lightsaber}
+//     })
+// );

@@ -7,6 +7,8 @@ const lightsaberReducer = (state, action) => {
     switch(action.type) {
         case "fetchAllLightsabers": 
             return action.payload;
+        case "unmountAllLightsabers": 
+            return [];
         default:
             return state;
     }
@@ -21,10 +23,16 @@ function fetchAllTheLightsabers (dispatch) {
 export default function Marketplace() {
 
     var [state, dispatch] = useReducer(lightsaberReducer, []);
-    var [currentState, setState] = useState([]);
+    var [currentState, setState] = useState({color: null, style: null, sortBy: null});
     
     useEffect(() => {
         fetchAllTheLightsabers(dispatch);
+    }, [])
+
+    useEffect(() => {
+        return () => {
+            dispatch({type: "unmountAllLightsabers"})
+        }
     }, [])
 
     const displayAllLightsabersForSale = state.map((lightsaber) => {
@@ -32,15 +40,44 @@ export default function Marketplace() {
             return <div><Lightsaber lightsaber={lightsaber}/></div>;
         }
     });
-
+    
     return (
         <div id="marketplace-container">
             <div class="clearfix"></div>
+
             <div class="filters-bar">
-                Search Filters go here:
+                <select name="colorfilter" id="colorfilter"> 
+                    <option value="none" selected disabled hidden> 
+                        Color
+                    </option> 
+                        <option value="blue">blue</option> 
+                        <option value="red">red </option> 
+                        <option value="yellow">yellow</option> 
+                        <option value="green">green</option> 
+                        <option value="purple">purple</option> 
+                </select> 
+
+                <select name="style" id="style"> 
+                    <option value="none" selected disabled hidden> 
+                        Style
+                    </option> 
+                        <option value="single">Single-Bladed</option> 
+                        <option value="double">Double-Bladed </option> 
+                </select>
+
+                <select name="sortBy" id="color"> 
+                    <option value="none" selected disabled hidden> 
+                        Sort By
+                    </option> 
+                        <option value="Most Recent">Most Recent</option> 
+                        <option value="Price">Price</option> 
+                </select> 
             </div>
+
+            <div class="clearfix"></div>
+            
             <div class="all-lightsabers-container">
-                {displayAllLightsabersForSale}
+                {displayAllLightsabersForSale.reverse()}
             </div>
             
         </div>
