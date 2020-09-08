@@ -19,7 +19,6 @@ class Greeting extends React.Component {
             return (
             <div>
                 <h1 class="greeting-logged-in left">You are logged in as: {this.props.currentUser.username}</h1>
-                <h1 class="greeting-logged-in right">Credits: {this.props.currentUser.credits}</h1>
                 <div class="clearfix"></div>
             </div>
                 

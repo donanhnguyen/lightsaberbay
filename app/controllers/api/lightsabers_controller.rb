@@ -36,14 +36,15 @@ class Api::LightsabersController < ApplicationController
 
     def lightsaber_params
       params.require(:lightsaber).permit(
+        :id,
         :name,
         :style,
         :price,
         :color,
         :forsale,
+        :user_id,
         :lat,
-        :lng,
-        :user_id
+        :lng
       )
     end
 end

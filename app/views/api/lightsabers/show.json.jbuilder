@@ -1,3 +1,4 @@
+json.id @lightsaber.id
 json.name @lightsaber.name
 json.color @lightsaber.color
 json.style @lightsaber.style

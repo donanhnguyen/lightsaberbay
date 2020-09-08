@@ -7,6 +7,10 @@ const lightsaberReducer = (state, action) => {
     switch(action.type) {
         case "fetchAllUserLightsabers": 
             return action.payload;
+        case "updateLightsaberListing":
+            return state;
+        case "updateLightsaberListingErrors":
+            return action.payload;
         default:
             return state;
     }
@@ -18,6 +22,21 @@ function fetchAllTheUserLightsabers (dispatch, user_id) {
     })
 };
 
+// function updateLightsaberListing (lightsaber, user_id, lightsaber_id, dispatch) {
+//     LightsaberAPIUtil.updateUsersLightsaber(lightsaber, user_id, lightsaber_id).then((single_lightsaber) =>  {
+//         dispatch({type: "updateLightsaberListing", payload: single_lightsaber})
+//     })
+// };
+
+function updateLightsaberListing (lightsaber, user_id, lightsaber_id, dispatch) {
+    LightsaberAPIUtil.updateUsersLightsaber(lightsaber, user_id, lightsaber_id).then( (single_lightsaber) => (
+        dispatch({type: "updateLightsaberListing", payload: single_lightsaber})
+    ), err => (
+        dispatch({type: "updateLightsaberListingErrors", payload: err.responseJSON})
+    ))
+};
+
+
 export default function Inventory () {
     var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
     var [state, dispatch] = useReducer(lightsaberReducer, []);
@@ -28,13 +47,13 @@ export default function Inventory () {
     
     const displayLightsabersForSale = state.map((lightsaber) => {
         if (lightsaber.forsale) {
-            return <div><UserLightsaber lightsaber={lightsaber}/></div>;
+            return <div><UserLightsaber updateLightsaberListing={updateLightsaberListing} dispatch={dispatch} lightsaber={lightsaber}/></div>;
         }
     });
 
     const displayLightsabersNotForSale = state.map((lightsaber) => {
         if (!lightsaber.forsale) {
-            return <div><UserLightsaber lightsaber={lightsaber}/></div>;
+            return <div><UserLightsaber updateLightsaberListing={updateLightsaberListing} dispatch={dispatch} lightsaber={lightsaber}/></div>;
         }
     });
 
