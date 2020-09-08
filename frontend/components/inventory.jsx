@@ -8,7 +8,13 @@ const lightsaberReducer = (state, action) => {
         case "fetchAllUserLightsabers": 
             return action.payload;
         case "updateLightsaberListing":
-            return state;
+            var newStateWithoutTheOne = state.filter((lightsaber) => {
+                if (lightsaber.id !== action.payload.id) {
+                    return lightsaber;
+                }
+            })
+            newStateWithoutTheOne.push(action.payload);
+            return newStateWithoutTheOne;
         case "updateLightsaberListingErrors":
             return action.payload;
         default:
@@ -21,12 +27,6 @@ function fetchAllTheUserLightsabers (dispatch, user_id) {
         dispatch({type: "fetchAllUserLightsabers", payload: all_lightsabers})
     })
 };
-
-// function updateLightsaberListing (lightsaber, user_id, lightsaber_id, dispatch) {
-//     LightsaberAPIUtil.updateUsersLightsaber(lightsaber, user_id, lightsaber_id).then((single_lightsaber) =>  {
-//         dispatch({type: "updateLightsaberListing", payload: single_lightsaber})
-//     })
-// };
 
 function updateLightsaberListing (lightsaber, user_id, lightsaber_id, dispatch) {
     LightsaberAPIUtil.updateUsersLightsaber(lightsaber, user_id, lightsaber_id).then( (single_lightsaber) => (
@@ -43,7 +43,7 @@ export default function Inventory () {
 
     useEffect(() => {
         fetchAllTheUserLightsabers(dispatch, localStorageCurrentUser.id);
-    }, [])
+    }, [  ])
     
     const displayLightsabersForSale = state.map((lightsaber) => {
         if (lightsaber.forsale) {

@@ -1,14 +1,18 @@
 import React, { Component, useState, useReducer, useEffect} from 'react'
-import MarketplaceMap from './marketplacemap';
+import {Redirect} from 'react-router-dom';
 import Lightsaber from './lightsaber';
 import * as LightsaberAPIUtil from '../util/lightsaber_api_util';
 
 const lightsaberReducer = (state, action) => {
+    // Object.freeze(state)
     switch(action.type) {
         case "fetchAllLightsabers": 
             return action.payload;
         case "unmountAllLightsabers": 
             return [];
+        case "buyLightsaber":
+            // var updatedStateWithoutTheNewOne = state.filter 
+            return state;
         default:
             return state;
     }
@@ -20,10 +24,16 @@ function fetchAllTheLightsabers (dispatch) {
         })
     };
 
-export default function Marketplace() {
+function buyLightsaber (lightsaber, lightsaber_id, dispatch) {
+    LightsaberAPIUtil.buyLightsaber(lightsaber, lightsaber_id).then( (single_lightsaber) => (
+        dispatch({type: "buyLightsaber", payload: single_lightsaber})
+    ), err => (
+        dispatch({type: "buyLightsaberErrors", payload: err.responseJSON})
+    ))
+}
 
+export default function Marketplace(props) {
     var [state, dispatch] = useReducer(lightsaberReducer, []);
-    var [currentState, setState] = useState({color: null, style: null, sortBy: null});
     
     useEffect(() => {
         fetchAllTheLightsabers(dispatch);
@@ -37,7 +47,7 @@ export default function Marketplace() {
 
     const displayAllLightsabersForSale = state.map((lightsaber) => {
         if (lightsaber.forsale) {
-            return <div><Lightsaber lightsaber={lightsaber}/></div>;
+            return <div><Lightsaber buyLightsaber={buyLightsaber} dispatch={dispatch} lightsaber={lightsaber}/></div>;
         }
     });
     

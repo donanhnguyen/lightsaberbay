@@ -21,7 +21,7 @@ export default function UserLightsaber({updateLightsaberListing, dispatch, light
         setState((prevState) => {
             return {...prevState, forsale: !prevState.forsale}
         });
-        const stateObject = Object.assign({}, {...state, forsale: false});
+        const stateObject = Object.assign({}, {...state, forsale: !state.forsale});
 
         updateLightsaberListing(stateObject, state.user_id, state.id, dispatch);
     }
@@ -30,7 +30,7 @@ export default function UserLightsaber({updateLightsaberListing, dispatch, light
         setState((prevState) => {
             return {...prevState, forsale: !prevState.forsale}
         });
-        const stateObject = Object.assign({}, {...state, forsale: true});
+        const stateObject = Object.assign({}, {...state, forsale: !state.forsale});
 
         updateLightsaberListing(stateObject, state.user_id, state.id, dispatch);
     }
