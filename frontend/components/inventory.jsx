@@ -8,13 +8,28 @@ const lightsaberReducer = (state, action) => {
         case "fetchAllUserLightsabers": 
             return action.payload;
         case "updateLightsaberListing":
-            var newStateWithoutTheOne = state.filter((lightsaber) => {
-                if (lightsaber.id !== action.payload.id) {
-                    return lightsaber;
+            
+            // for (let i = 0; i < state.length; i++) {
+            //     var currentSaber = state[i];
+            //     if (currentSaber.id === action.payload.id) {
+            //         state[i] = action.payload;
+            //     }
+            // }
+            // console.log('newstate changed')
+            // console.log(state);
+            // return state;
+            var newState = [];
+            for (let i = 0; i < state.length; i++) {
+                var currentSaber = state[i];
+                if (currentSaber.id !== action.payload.id) {
+                    newState.push(currentSaber);
                 }
-            })
-            newStateWithoutTheOne.push(action.payload);
-            return newStateWithoutTheOne;
+             }
+            newState.push(action.payload);
+            console.log('newstate changed')
+            console.log(newState);
+            return newState;
+
         case "updateLightsaberListingErrors":
             return action.payload;
         default:
@@ -40,35 +55,54 @@ function updateLightsaberListing (lightsaber, user_id, lightsaber_id, dispatch) 
 export default function Inventory () {
     var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
     var [state, dispatch] = useReducer(lightsaberReducer, []);
+    var [lightsabers, setLightsabers] = useState([]);
 
     useEffect(() => {
         fetchAllTheUserLightsabers(dispatch, localStorageCurrentUser.id);
-    }, [  ])
-    
-    const displayLightsabersForSale = state.map((lightsaber) => {
-        if (lightsaber.forsale) {
-            return <div><UserLightsaber updateLightsaberListing={updateLightsaberListing} dispatch={dispatch} lightsaber={lightsaber}/></div>;
-        }
-    });
+    }, []);
 
-    const displayLightsabersNotForSale = state.map((lightsaber) => {
-        if (!lightsaber.forsale) {
-            return <div><UserLightsaber updateLightsaberListing={updateLightsaberListing} dispatch={dispatch} lightsaber={lightsaber}/></div>;
+    function displayLightsabersForSale () {
+        if (state) {
+            var arrayOfSabers = [];
+            for (let i = 0; i < state.length; i++) {
+                if (state[i].forsale) {
+                    arrayOfSabers.push(state[i]);
+                }
+            }
+            var displayArrayOfSabers = arrayOfSabers.map((lightsaber) => {
+                return <div><UserLightsaber updateLightsaberListing={updateLightsaberListing} dispatch={dispatch} lightsaber={lightsaber}/></div>
+            })
+            return displayArrayOfSabers;
         }
-    });
+    }
+   
+    function displayLightsabersNotForSale () {
+        if (state) {
+            var arrayOfSabers = [];
+            for (let i = 0; i < state.length; i++) {
+                if (!state[i].forsale) {
+                    arrayOfSabers.push(state[i]);
+                }
+            }
+            var displayArrayOfSabers = arrayOfSabers.map((lightsaber) => {
+                return <div><UserLightsaber updateLightsaberListing={updateLightsaberListing} dispatch={dispatch} lightsaber={lightsaber}/></div>
+            })
+            return displayArrayOfSabers;
+        }
+    }
 
     return (
         <div>
             <h1>Inventory for Sale:</h1>
             <div class="all-lightsabers-container">
-                {displayLightsabersForSale}
+                {displayLightsabersForSale()}
             </div>
             
             <div class="clearfix"></div>
 
             <h1>Inventory Not for Sale:</h1>
             <div class="all-lightsabers-container">
-                {displayLightsabersNotForSale}
+                {displayLightsabersNotForSale()}
             </div>
 
             <div class="clearfix"></div>

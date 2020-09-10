@@ -21,7 +21,7 @@ class Api::LightsabersController < ApplicationController
     end
 
     def update
-      @lightsaber = Lightsaber.find(params[:id])
+      @lightsaber = Lightsaber.find(params[:id])      
       @lightsaber.update_attributes(lightsaber_params)
       render :show
     end

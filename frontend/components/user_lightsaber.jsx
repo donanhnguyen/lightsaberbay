@@ -17,29 +17,20 @@ export default function UserLightsaber({updateLightsaberListing, dispatch, light
         lng: lightsaber.lng
     });
 
-    const handleRemoveListing = () => {
+    function handleListOrUnlist () {
         setState((prevState) => {
             return {...prevState, forsale: !prevState.forsale}
         });
-        const stateObject = Object.assign({}, {...state, forsale: !state.forsale});
-
+        var stateObject = {...state, forsale: state.forsale ? false : true};
         updateLightsaberListing(stateObject, state.user_id, state.id, dispatch);
-    }
-
-    const handleListForSale = () => {
-        setState((prevState) => {
-            return {...prevState, forsale: !prevState.forsale}
-        });
-        const stateObject = Object.assign({}, {...state, forsale: !state.forsale});
-
-        updateLightsaberListing(stateObject, state.user_id, state.id, dispatch);
+        console.log(stateObject);
     }
 
     const sellOrNotButton = () => {
-        if (state.forsale) {
-            return (<button onClick={handleRemoveListing} class="add-to-cart-button">Remove Listing</button>)
+        if (lightsaber.forsale) {
+            return (<button onClick={handleListOrUnlist} class="add-to-cart-button">Remove Listing</button>)
         } else {
-            return (<button onClick={handleListForSale} class="add-to-cart-button">List on Marketplace</button>)
+            return (<button onClick={handleListOrUnlist} class="add-to-cart-button">List on Marketplace</button>)
         }
     }
 

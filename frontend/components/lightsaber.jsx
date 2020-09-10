@@ -6,9 +6,7 @@ export default function Lightsaber({lightsaber, dispatch, buyLightsaber}) {
     var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
 
     function handleBuyLightsaber () {
-       
-        var lightsaberState1 = {...lightsaber, user_id: localStorageCurrentUser.id};
-
+        var lightsaberState1 = {...lightsaber, user_id: localStorageCurrentUser.id, forsale: false};
         buyLightsaber(lightsaberState1, lightsaber.id, dispatch);
     }
 
