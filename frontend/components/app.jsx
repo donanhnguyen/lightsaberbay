@@ -17,10 +17,10 @@ import {AuthRoute, ProtectedRoute} from '../util/route_util.jsx';
 
 import SessionFormContainer from './session_form_container';
 
-
 import Marketplace from './marketplace';
 import Inventory from './inventory';
 import Messages from './messages';
+import MyInventoryContainer from './my_inventory_container'
 
 class App extends React.Component {
 
@@ -35,6 +35,7 @@ class App extends React.Component {
                     <Route exact path="/" component={GreetingContainer} />
                     <Route path="/marketplace" component={Marketplace} />
                     <Route path="/Inventory" component={Inventory} />
+                    {/* <Route path="/Inventory" component={MyInventoryContainer} /> */}
                     <Route path="/messages" component={Messages} />
 
                     <AuthRoute path="/login" component={SessionFormContainer} />

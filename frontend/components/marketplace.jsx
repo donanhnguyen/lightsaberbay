@@ -11,8 +11,14 @@ const lightsaberReducer = (state, action) => {
         case "unmountAllLightsabers": 
             return [];
         case "buyLightsaber":
-            // var updatedStateWithoutTheNewOne = state.filter 
-            return state;
+            var newState = [];
+            for (let i=0; i<state.length; i++) {
+                if (state[i].id !== action.payload.id) {
+                    newState.push(state[i]);
+                }
+            }
+            console.log(newState);
+            return newState;
         default:
             return state;
     }

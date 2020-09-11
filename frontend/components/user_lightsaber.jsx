@@ -5,39 +5,22 @@ export default function UserLightsaber({updateLightsaberListing, dispatch, light
 
     var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
 
-    const [state, setState] = useState({
-        id: lightsaber.id,
-        name: lightsaber.name, 
-        style: lightsaber.style,
-        price: lightsaber.price,
-        color: lightsaber.color,
-        forsale: lightsaber.forsale,
-        user_id: lightsaber.user_id,
-        lat: lightsaber.lat,
-        lng: lightsaber.lng
-    });
-
-    function handleListOrUnlist () {
-        setState((prevState) => {
-            return {...prevState, forsale: !prevState.forsale}
-        });
-        var stateObject = {...state, forsale: state.forsale ? false : true};
-        updateLightsaberListing(stateObject, state.user_id, state.id, dispatch);
-        console.log(stateObject);
+    function handleListOrUnlist (lightsaber) {
+        var stateObject = {...lightsaber, forsale: !lightsaber.forsale};
+        updateLightsaberListing(stateObject, stateObject.user_id, stateObject.id, dispatch);
     }
 
     const sellOrNotButton = () => {
         if (lightsaber.forsale) {
-            return (<button onClick={handleListOrUnlist} class="add-to-cart-button">Remove Listing</button>)
+            return (<button onClick={() => handleListOrUnlist(lightsaber)} class="add-to-cart-button">Remove Listing</button>)
         } else {
-            return (<button onClick={handleListOrUnlist} class="add-to-cart-button">List on Marketplace</button>)
+            return (<button onClick={() => handleListOrUnlist(lightsaber)} class="add-to-cart-button">List on Marketplace</button>)
         }
     }
 
     return (
         <div class={`lightsaber-item ${lightsaber.color + lightsaber.style}`}>
             <h1>{lightsaber.name}</h1>
-            <h1>Seller: {lightsaber.owner}</h1>
             <h1>{lightsaber.price} credits</h1>
 
             <div >

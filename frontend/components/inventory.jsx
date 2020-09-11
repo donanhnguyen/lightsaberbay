@@ -8,28 +8,14 @@ const lightsaberReducer = (state, action) => {
         case "fetchAllUserLightsabers": 
             return action.payload;
         case "updateLightsaberListing":
-            
-            // for (let i = 0; i < state.length; i++) {
-            //     var currentSaber = state[i];
-            //     if (currentSaber.id === action.payload.id) {
-            //         state[i] = action.payload;
-            //     }
-            // }
-            // console.log('newstate changed')
-            // console.log(state);
-            // return state;
-            var newState = [];
-            for (let i = 0; i < state.length; i++) {
-                var currentSaber = state[i];
-                if (currentSaber.id !== action.payload.id) {
-                    newState.push(currentSaber);
+           var newOne = state.map((lightsaber) => {
+                if (lightsaber.id === action.payload.id) {
+                    return action.payload;
+                } else {
+                    return lightsaber;
                 }
-             }
-            newState.push(action.payload);
-            console.log('newstate changed')
-            console.log(newState);
-            return newState;
-
+            })
+            return newOne;
         case "updateLightsaberListingErrors":
             return action.payload;
         default:
@@ -51,11 +37,9 @@ function updateLightsaberListing (lightsaber, user_id, lightsaber_id, dispatch) 
     ))
 };
 
-
 export default function Inventory () {
     var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
     var [state, dispatch] = useReducer(lightsaberReducer, []);
-    var [lightsabers, setLightsabers] = useState([]);
 
     useEffect(() => {
         fetchAllTheUserLightsabers(dispatch, localStorageCurrentUser.id);
@@ -70,7 +54,7 @@ export default function Inventory () {
                 }
             }
             var displayArrayOfSabers = arrayOfSabers.map((lightsaber) => {
-                return <div><UserLightsaber updateLightsaberListing={updateLightsaberListing} dispatch={dispatch} lightsaber={lightsaber}/></div>
+                return <UserLightsaber updateLightsaberListing={updateLightsaberListing} dispatch={dispatch} lightsaber={lightsaber}/>
             })
             return displayArrayOfSabers;
         }
@@ -85,9 +69,9 @@ export default function Inventory () {
                 }
             }
             var displayArrayOfSabers = arrayOfSabers.map((lightsaber) => {
-                return <div><UserLightsaber updateLightsaberListing={updateLightsaberListing} dispatch={dispatch} lightsaber={lightsaber}/></div>
+                return <UserLightsaber updateLightsaberListing={updateLightsaberListing} dispatch={dispatch} lightsaber={lightsaber}/>
             })
-            return displayArrayOfSabers;
+            return displayArrayOfSabers.reverse();
         }
     }
 
