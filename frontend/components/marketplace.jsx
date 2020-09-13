@@ -55,13 +55,17 @@ function fetchUser (user_id, dispatch) {
     })
 }
 
-export const updateUsersCredits = ( user, user_id , dispatch) => {
+function updateUsersCredits ( user, user_id , dispatch) {
     UserAPIUtil.updateUsersCredits(user, user_id).then((user) => {
         dispatch({type: "updateUsersCredits", payload: user})
     })
 }
 
-
+function updateOtherUsersCredits ( user, user_id , dispatch) {
+    UserAPIUtil.updateUsersCredits(user, user_id).then((user) => {
+        dispatch({type: "updateUsersCredits", payload: user})
+    })
+}
 
 
 /////////COMPONENT HERE:
@@ -90,6 +94,7 @@ export default function Marketplace(props) {
                     lightsaber={lightsaber}
                     userDispatch={userDispatch}
                     userState={userState}
+                    updateUsersCredits={updateUsersCredits}
                 />
                 </div>
             )
