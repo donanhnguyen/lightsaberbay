@@ -24,8 +24,6 @@ ActiveRecord::Schema.define(version: 20200831024821) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "lat"
-    t.float "lng"
     t.index ["user_id"], name: "index_lightsabers_on_user_id"
   end
 

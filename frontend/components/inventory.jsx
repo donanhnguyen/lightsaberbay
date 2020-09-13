@@ -2,6 +2,8 @@ import React, { Component, useState, useReducer, useEffect} from 'react'
 import CreateSaleForm  from './createSaleForm';
 import UserLightsaber from './user_lightsaber';
 import * as LightsaberAPIUtil from '../util/lightsaber_api_util';
+import UserInfo from './userInfo';
+import * as UserAPIUtil from '../util/user_api_util';
 
 const lightsaberReducer = (state, action) => {
     switch(action.type) {
@@ -23,6 +25,15 @@ const lightsaberReducer = (state, action) => {
     }
 }
 
+const userReducer = (state, action) => {
+    switch(action.type) {
+        case "fetchUser": 
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 function fetchAllTheUserLightsabers (dispatch, user_id) {
     LightsaberAPIUtil.fetchUserLightsabers(user_id).then((all_lightsabers) =>  {
         dispatch({type: "fetchAllUserLightsabers", payload: all_lightsabers})
@@ -37,12 +48,21 @@ function updateLightsaberListing (lightsaber, user_id, lightsaber_id, dispatch) 
     ))
 };
 
+function fetchUser (user_id, dispatch) {
+    UserAPIUtil.fetchUser(user_id).then((current_user) => {
+        dispatch({type: "fetchUser", payload: current_user});
+    })
+}
+
 export default function Inventory () {
     var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
     var [state, dispatch] = useReducer(lightsaberReducer, []);
+    var [userState, userDispatch] = useReducer(userReducer);
+
 
     useEffect(() => {
         fetchAllTheUserLightsabers(dispatch, localStorageCurrentUser.id);
+        fetchUser(localStorageCurrentUser.id, userDispatch);
     }, []);
 
     function displayLightsabersForSale () {
@@ -77,6 +97,8 @@ export default function Inventory () {
 
     return (
         <div>
+            <UserInfo userState={userState}/>
+
             <h1>Inventory for Sale:</h1>
             <div class="all-lightsabers-container">
                 {displayLightsabersForSale()}

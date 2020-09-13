@@ -5,8 +5,6 @@ json.array! @all_lightsabers do |lightsaber|
     json.style lightsaber.style
     json.forsale lightsaber.forsale
     json.price lightsaber.price
-    json.lat lightsaber.lat
-    json.lng lightsaber.lng
     json.user_id lightsaber.user_id
     json.owner lightsaber.user.username
     json.created_at lightsaber.created_at

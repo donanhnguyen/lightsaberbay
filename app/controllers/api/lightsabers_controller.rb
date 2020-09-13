@@ -43,8 +43,6 @@ class Api::LightsabersController < ApplicationController
         :color,
         :forsale,
         :user_id,
-        :lat,
-        :lng
       )
     end
 end

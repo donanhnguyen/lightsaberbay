@@ -2,9 +2,10 @@ import React, { Component, useState, useReducer, useEffect} from 'react'
 import {Redirect} from 'react-router-dom';
 import Lightsaber from './lightsaber';
 import * as LightsaberAPIUtil from '../util/lightsaber_api_util';
+import * as UserAPIUtil from '../util/user_api_util';
+import UserInfo from './userInfo';
 
 const lightsaberReducer = (state, action) => {
-    // Object.freeze(state)
     switch(action.type) {
         case "fetchAllLightsabers": 
             return action.payload;
@@ -17,8 +18,18 @@ const lightsaberReducer = (state, action) => {
                     newState.push(state[i]);
                 }
             }
-            console.log(newState);
             return newState;
+        default:
+            return state;
+    }
+}
+
+const userReducer = (state, action) => {
+    switch(action.type) {
+        case "fetchUser": 
+            return action.payload;
+        case "updateUsersCredits":
+            return action.payload;
         default:
             return state;
     }
@@ -35,14 +46,33 @@ function buyLightsaber (lightsaber, lightsaber_id, dispatch) {
         dispatch({type: "buyLightsaber", payload: single_lightsaber})
     ), err => (
         dispatch({type: "buyLightsaberErrors", payload: err.responseJSON})
-    ))
+    ));
 }
 
+function fetchUser (user_id, dispatch) {
+    UserAPIUtil.fetchUser(user_id).then((current_user) => {
+        dispatch({type: "fetchUser", payload: current_user});
+    })
+}
+
+export const updateUsersCredits = ( user, user_id , dispatch) => {
+    UserAPIUtil.updateUsersCredits(user, user_id).then((user) => {
+        dispatch({type: "updateUsersCredits", payload: user})
+    })
+}
+
+
+
+
+/////////COMPONENT HERE:
 export default function Marketplace(props) {
+    var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
     var [state, dispatch] = useReducer(lightsaberReducer, []);
-    
+    var [userState, userDispatch] = useReducer(userReducer);
+
     useEffect(() => {
         fetchAllTheLightsabers(dispatch);
+        fetchUser(localStorageCurrentUser.id, userDispatch);
     }, [])
 
     useEffect(() => {
@@ -53,13 +83,24 @@ export default function Marketplace(props) {
 
     const displayAllLightsabersForSale = state.map((lightsaber) => {
         if (lightsaber.forsale) {
-            return <div><Lightsaber buyLightsaber={buyLightsaber} dispatch={dispatch} lightsaber={lightsaber}/></div>;
+            return (
+                <div><Lightsaber 
+                    buyLightsaber={buyLightsaber} 
+                    dispatch={dispatch} 
+                    lightsaber={lightsaber}
+                    userDispatch={userDispatch}
+                    userState={userState}
+                />
+                </div>
+            )
         }
     });
     
     return (
         <div id="marketplace-container">
             <div class="clearfix"></div>
+
+            <UserInfo userState={userState}/>
 
             <div class="filters-bar">
                 <select name="colorfilter" id="colorfilter"> 

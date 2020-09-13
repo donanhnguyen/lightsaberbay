@@ -32,7 +32,6 @@ import {
                             </ul>
                             
                             <ul class="nav-bar-list right">
-                                <li>Credits: {this.props.currentUser.credits}</li>
                                 <li> <Link class={'nav-link nav-link-hover'} to="/cart">Cart</Link></li>
                                 <li> <Link class={'nav-link nav-link-hover'} to="/messages">Messages</Link></li>     
                                 <li>
