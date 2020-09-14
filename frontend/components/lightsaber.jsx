@@ -1,5 +1,6 @@
 import React, {useReducer, useEffect} from 'react';
 import * as UserAPIUtil from '../util/user_api_util';
+import * as MessageAPIUtil from '../util/message_api_util';
 
 const otherUserReducer = (state, action) => {
     switch(action.type) {
@@ -24,6 +25,10 @@ function updateOtherUsersCredits ( user, user_id , dispatch) {
     })
 }
 
+function sendMessageToSeller (message, user_id) {
+    MessageAPIUtil.createMessage(message, user_id);
+}
+
 export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDispatch, userState, updateUsersCredits}) {
     var lightsaberDate = lightsaber.updated_at.split("")
     var displayLightsaberDate = lightsaberDate.slice(5, 7).join("") + "-" + lightsaberDate.slice(8, 10).join("") + "-" + lightsaberDate.slice(0, 4).join("");
@@ -37,8 +42,13 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
     function handleBuyLightsaber () {
         var lightsaberState1 = {...lightsaber, user_id: userState.id, forsale: false};
         var userObject = {...userState, credits: userState.credits - lightsaber.price};
-
         var otherUserObject = {...otherUserState, credits: otherUserState.credits + lightsaber.price}
+
+        var messageToSellerObject = {
+            sender: userState.username,
+            body: `${userState.username} has purchased your item of ${lightsaber.name} for ${lightsaber.price} !`,
+            read: false
+        }
 
         var confirmMessage = confirm(`Are you sure you want to purchase ${lightsaber.name} for ${lightsaber.price} credits?`)
         if (confirmMessage) {
@@ -46,6 +56,7 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
                 buyLightsaber(lightsaberState1, lightsaber.id, dispatch);
                 updateUsersCredits(userObject, userState.id, userDispatch);
                 updateOtherUsersCredits(otherUserObject, lightsaber.user_id, otherUserDispatch);
+                sendMessageToSeller(messageToSellerObject, lightsaber.user_id);
             } else {
                 alert("You can't afford that item!")
             }

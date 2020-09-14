@@ -27,16 +27,11 @@ ActiveRecord::Schema.define(version: 20200831024821) do
     t.index ["user_id"], name: "index_lightsabers_on_user_id"
   end
 
-  create_table "marketplaces", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "messages", force: :cascade do |t|
     t.string "sender", null: false
     t.bigint "user_id", null: false
     t.string "body", null: false
+    t.boolean "read", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_messages_on_user_id"

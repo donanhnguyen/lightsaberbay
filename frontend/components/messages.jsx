@@ -1,29 +1,37 @@
-import React, { Component } from 'react'
+import React, { useState, useReducer, useEffect } from 'react'
+import * as MessageAPIUtil from '../util/message_api_util';
+import Message from './message';
 
-export const fetchMessages = (user_id) => {
-    return $.ajax({
-        method: 'GET',
-        url: `api/users/${user_id}/messages`
-    })
-};
-
-export const createBudget = (user_id, message) => (
-    $.ajax({
-        method: 'POST',
-        url: `api/users/${user_id}/messages`,
-        data: {message}
-    })
-);
-
-export class Messages extends Component {
-    render() {
-        return (
-            <div>
-                messaages here
-                CurrentUser.messages
-            </div>
-        )
+const messagesReducer = (state, action) => {
+    switch(action.type) {
+        case "fetchMessages": 
+            return action.payload;
+        default:
+            return state;
     }
 }
 
-export default Messages
+function fetchAllMessages (user_id, dispatch) {
+    MessageAPIUtil.fetchMessages(user_id).then((all_messages) =>  {
+        dispatch({type: "fetchMessages", payload: all_messages})
+    })
+};
+
+export default function Messages () {
+    var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
+    var [messagesState, dispatchMessages] = useReducer(messagesReducer, []);
+
+    useEffect(() => {
+        fetchAllMessages(localStorageCurrentUser.id, dispatchMessages);
+    }, [])
+
+    const displayMessages = messagesState.map((message) => {
+        return <Message message={message} />
+    })
+
+    return (
+        <div>
+            {displayMessages.reverse()}
+        </div>
+    )
+}

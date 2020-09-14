@@ -8,7 +8,6 @@
 
 User.destroy_all
 
-mainMarketplace = Marketplace.create(name: "Main Marketplace")
 admin = User.create!(
     username: "admin",
     password_digest: "sex",

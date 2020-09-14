@@ -61,13 +61,6 @@ function updateUsersCredits ( user, user_id , dispatch) {
     })
 }
 
-function updateOtherUsersCredits ( user, user_id , dispatch) {
-    UserAPIUtil.updateUsersCredits(user, user_id).then((user) => {
-        dispatch({type: "updateUsersCredits", payload: user})
-    })
-}
-
-
 /////////COMPONENT HERE:
 export default function Marketplace(props) {
     var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));

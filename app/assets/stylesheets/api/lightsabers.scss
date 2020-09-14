@@ -92,9 +92,30 @@
     background-color: rgb(230, 91, 91);
 }
 
-
-
 .userInfoBar {
     padding: 20px;
     font-size: 40px;
+}
+.message {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+.message p {
+    font-size: 25px;
+}
+.messageRead {
+    color: gray;
+}
+.messageUnread {
+    color: rgb(253, 122, 122);
+}
+.message-date {
+    color: white;
+}
+.mark-as-unread-button {
+    padding: 7px;
+    font-size: 15px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(24, 74, 150);
 }

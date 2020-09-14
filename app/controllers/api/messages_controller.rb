@@ -1,4 +1,5 @@
 class Api::MessagesController < ApplicationController
+
     def index
         @user = User.find(params[:user_id])
         @user_messages = @user.messages
@@ -15,18 +16,13 @@ class Api::MessagesController < ApplicationController
       end
     end
 
-    def update
-      @message = Message.find(params[:id])
-      @message.update_attributes(message)
-      render :show
-    end
-
     private
 
     def message_params
       params.require(:message).permit(
         :sender,
         :body,
+        :read
       )
     end
 end
