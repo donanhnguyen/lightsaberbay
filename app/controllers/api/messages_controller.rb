@@ -16,6 +16,12 @@ class Api::MessagesController < ApplicationController
       end
     end
 
+    def update
+      @message = Message.find(params[:id])      
+      @message.update_attributes(message_params)
+      render :show
+    end
+
     private
 
     def message_params

@@ -92,6 +92,17 @@
     background-color: rgb(230, 91, 91);
 }
 
+.inventory-lightsaber-button {
+    padding: 3px;
+    font-size: 14px;
+    border-radius: 5px;
+    width: 100%;
+    color: white;
+    background-color: rgb(24, 74, 150);
+}
+.inventory-lightsaber-button:hover {
+    background-color: rgb(230, 91, 91);
+}
 .userInfoBar {
     padding: 20px;
     font-size: 40px;
@@ -99,23 +110,28 @@
 .message {
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
+    background-color: white;
+    margin: 10px;
 }
 .message p {
     font-size: 25px;
 }
 .messageRead {
-    color: gray;
+    color: rgb(87, 87, 87);
 }
 .messageUnread {
-    color: rgb(253, 122, 122);
+    color: rgb(255, 20, 20);
 }
 .message-date {
-    color: white;
+    color: rgb(26, 117, 252);
 }
-.mark-as-unread-button {
+.toggle-read-button {
     padding: 7px;
     font-size: 15px;
     border-radius: 5px;
     color: white;
     background-color: rgb(24, 74, 150);
+}
+.toggle-read-button:hover {
+    background-color: rgb(255, 137, 137);
 }

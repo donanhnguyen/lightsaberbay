@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :lightsabers, only: [:create, :index, :show, :destroy, :update,] 
     end
     resources :users, only: [:create, :show, :index] do
-      resources :messages, only: [:create, :index, :show] 
+      resources :messages, only: [:create, :index, :show, :update] 
     end
     resource :session, only: [:create, :destroy, :show, :index]
     resources :lightsabers, only: [:create, :index, :show, :destroy, :update,] 

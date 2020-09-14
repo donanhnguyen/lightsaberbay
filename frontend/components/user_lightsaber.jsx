@@ -4,6 +4,9 @@ import * as LightsaberAPIUtil from '../util/lightsaber_api_util'
 export default function UserLightsaber({updateLightsaberListing, dispatch, lightsaber}) {
 
     var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
+    var [editingMode, changeEditMode] = useState(false);
+    var [currentLightsaberPrice, changePrice] = useState(lightsaber.price);
+
 
     function handleListOrUnlist (lightsaber) {
         var stateObject = {...lightsaber, forsale: !lightsaber.forsale};
@@ -18,14 +21,41 @@ export default function UserLightsaber({updateLightsaberListing, dispatch, light
         }
     }
 
+    function handleChangePrice (e) {
+        changePrice(e.target.value);
+    }
+
+    function submitChangeOfPrice () {
+        console.log("new price is " + parseInt(currentLightsaberPrice))
+        changeEditMode((prevState) => !prevState);
+    }
+
+    function handleToggleEditMode () {
+        changeEditMode((prevState) => !prevState);
+    }
+
+    function editOrNotButton () {
+        if (!editingMode) {
+            return <button onClick={handleToggleEditMode} class="inventory-lightsaber-button">Edit Price</button>;
+        } else {
+            return <div>
+                    <input onChange={handleChangePrice} type="number" id="newPrice "name="newPrice"></input>
+                    <button class="inventory-lightsaber-button" onClick={handleToggleEditMode}>Cancel</button>
+                    <button class="inventory-lightsaber-button" onClick={submitChangeOfPrice}>Change Price</button>
+                </div>
+        }
+    }
+
     return (
         <div class={`lightsaber-item ${lightsaber.color + lightsaber.style}`}>
             <h1>{lightsaber.name}</h1>
             <h1>{lightsaber.price} credits</h1>
 
-            <div >
+            <div>
                 {sellOrNotButton()}
-                <button class="add-to-cart-button">Edit Price</button>
+            </div>
+            <div >
+                {editOrNotButton()}
             </div>
         </div>
     )

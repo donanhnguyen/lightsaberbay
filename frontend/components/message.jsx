@@ -1,29 +1,32 @@
 import React from 'react'
 
 
-export default function Message ({message}) {
+export default function Message ({message, updateMessageRead, dispatch}) {
 
-    console.log(message);
     var messageDate = message.updated_at.split("")
     var displayMessageDate = messageDate.slice(5, 7).join("") + "-" + messageDate.slice(8, 10).join("") + "-" + messageDate.slice(0, 4).join("");
+    const readOrUnreadClass = message.read ? "messageRead" : "messageUnread";
 
-    const readOrUnread = () => {
-        var eleclass;
-        if (message.read) {
-            var eleclass = "messageRead";
-        } else {
-            var eleclass = "messageUnread"
-        }
-        return eleclass;
+    function handleToggleRead () {
+        var messageObject = {...message, read: !message.read};
+        updateMessageRead(messageObject, message.user_id, message.id, dispatch);
+    }
+
+    function readOrUnreadButton () {
+            if (message.read) {
+                return <button onClick={handleToggleRead} class='toggle-read-button'>Mark as UnRead</button>
+            } else {
+                return <button onClick={handleToggleRead} class='toggle-read-button'>Mark as Read</button>
+            }
     }
 
     return (
-        <div class={`message ${readOrUnread()}`}>
+        <div class={`message ${readOrUnreadClass}`}>
             <h1>From: LightsaberBay Admin</h1>
             <p class='message-date'>{displayMessageDate}</p>
             <p>{message.body}</p>
             <div class="">
-                <button class='mark-as-unread-button'>Mark as Read</button>
+                {readOrUnreadButton()}
             </div>
         </div>
     )
