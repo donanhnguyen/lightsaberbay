@@ -1,5 +1,5 @@
 import React, { Component, useState, useReducer, useEffect} from 'react'
-import {Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Lightsaber from './lightsaber';
 import * as LightsaberAPIUtil from '../util/lightsaber_api_util';
 import * as UserAPIUtil from '../util/user_api_util';
@@ -68,8 +68,10 @@ export default function Marketplace(props) {
     var [userState, userDispatch] = useReducer(userReducer);
 
     useEffect(() => {
-        fetchAllTheLightsabers(dispatch);
-        fetchUser(localStorageCurrentUser.id, userDispatch);
+        if (localStorageCurrentUser) {
+            fetchAllTheLightsabers(dispatch);
+            fetchUser(localStorageCurrentUser.id, userDispatch);
+        }
     }, [])
 
     useEffect(() => {
@@ -93,8 +95,8 @@ export default function Marketplace(props) {
             )
         }
     });
-    
-    return (
+    if (localStorageCurrentUser) {
+        return (
         <div id="marketplace-container">
             <div class="clearfix"></div>
 
@@ -136,5 +138,9 @@ export default function Marketplace(props) {
             </div>
             
         </div>
-    )
+        )
+    
+    } else {
+        return <h1 class="greeting-logged-in">You are not logged in. Click <Link to="/login">Here</Link> to login or <Link to="/signup">Here</Link> to sign up.</h1>
+    }
 }

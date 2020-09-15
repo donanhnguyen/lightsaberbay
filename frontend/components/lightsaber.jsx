@@ -46,7 +46,7 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
 
         var messageToSellerObject = {
             sender: userState.username,
-            body: `${userState.username} has purchased your item of ${lightsaber.name} for ${lightsaber.price} !`,
+            body: `${userState.username} has purchased your item of ${lightsaber.name} for ${lightsaber.price} credits!`,
             read: false
         }
 
@@ -76,10 +76,10 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
         <div class={`lightsaber-item ${lightsaber.color + lightsaber.style}`}>
             <h1>{lightsaber.name}</h1>
             <h1>Seller: {lightsaber.owner}</h1>
-            <h1>{lightsaber.price} credits</h1>
+            <h1>{lightsaber.price} Credits</h1>
             <h1>Listed on {displayLightsaberDate}</h1>
 
-            <div >
+            <div>
                 {buyButtonOrNot()}
             </div>
         </div>

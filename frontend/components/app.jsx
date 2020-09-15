@@ -1,8 +1,5 @@
 import React, {useContext} from 'react';
-import {
-    Route,
-  } from 'react-router-dom';
-
+import {Route} from 'react-router-dom';
 import NavContainer from './nav_container';
 import Footer from './footer';
 import GreetingContainer from './greeting_container';
@@ -21,23 +18,18 @@ class App extends React.Component {
     render () {
         return (
             <div>
-                    <NavContainer />
-                    <Route exact path="/" component={GreetingContainer} />
-                    <Route path="/marketplace" component={Marketplace} />
-                    <Route path="/Inventory" component={Inventory} />
-                    <Route path="/messages" component={Messages} />
-
-                    <AuthRoute path="/login" component={SessionFormContainer} />
-                    <AuthRoute path="/signup" component={SessionFormContainer} />
-
-                    <div class='clearfix'></div>
-
-                    <Footer />
+                <NavContainer />
+                <Route exact path="/" component={GreetingContainer} />
+                <Route path="/marketplace" component={Marketplace} />
+                <Route path="/Inventory" component={Inventory} />
+                <Route path="/messages" component={Messages} />
+                <AuthRoute path="/login" component={SessionFormContainer} />
+                <AuthRoute path="/signup" component={SessionFormContainer} />
+                <div class='clearfix'></div>
+                <Footer />
             </div>
         )
     }
-
-
 }
 
 export default App;

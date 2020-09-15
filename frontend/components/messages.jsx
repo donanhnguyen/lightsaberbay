@@ -1,4 +1,5 @@
 import React, { useState, useReducer, useEffect } from 'react'
+import {Redirect, Link} from 'react-router-dom';
 import * as MessageAPIUtil from '../util/message_api_util';
 import Message from './message';
 
@@ -37,16 +38,23 @@ export default function Messages () {
     var [messagesState, dispatchMessages] = useReducer(messagesReducer, []);
 
     useEffect(() => {
-        fetchAllMessages(localStorageCurrentUser.id, dispatchMessages);
+        if (localStorageCurrentUser) {
+              fetchAllMessages(localStorageCurrentUser.id, dispatchMessages);
+        }
     }, [])
 
     const displayMessages = messagesState.map((message) => {
         return <Message message={message} updateMessageRead={updateMessageRead} dispatch={dispatchMessages}/>
     })
 
-    return (
-        <div>
-            {displayMessages.reverse()}
-        </div>
-    )
+    if (localStorageCurrentUser) {
+        return (
+            <div>
+                {displayMessages.reverse()}
+            </div>
+        )
+    } else {
+        return <h1 class="greeting-logged-in">You are not logged in. Click <Link to="/login">Here</Link> to login or <Link to="/signup">Here</Link> to sign up.</h1>
+    }
+   
 }

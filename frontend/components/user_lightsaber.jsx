@@ -26,7 +26,8 @@ export default function UserLightsaber({updateLightsaberListing, dispatch, light
     }
 
     function submitChangeOfPrice () {
-        console.log("new price is " + parseInt(currentLightsaberPrice))
+        var newLightsaberObject = {...lightsaber, price: parseInt(currentLightsaberPrice) };
+        updateLightsaberListing(newLightsaberObject, lightsaber.user_id, lightsaber.id, dispatch)
         changeEditMode((prevState) => !prevState);
     }
 
@@ -49,7 +50,7 @@ export default function UserLightsaber({updateLightsaberListing, dispatch, light
     return (
         <div class={`lightsaber-item ${lightsaber.color + lightsaber.style}`}>
             <h1>{lightsaber.name}</h1>
-            <h1>{lightsaber.price} credits</h1>
+            <h1>{lightsaber.price} Credits</h1>
 
             <div>
                 {sellOrNotButton()}

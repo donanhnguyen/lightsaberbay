@@ -1,5 +1,5 @@
-import React, { Component, useState, useReducer, useEffect} from 'react'
-import CreateSaleForm  from './createSaleForm';
+import React, {useState, useReducer, useEffect} from 'react'
+import { Redirect, Link} from "react-router-dom"
 import UserLightsaber from './user_lightsaber';
 import * as LightsaberAPIUtil from '../util/lightsaber_api_util';
 import UserInfo from './userInfo';
@@ -61,8 +61,10 @@ export default function Inventory () {
 
 
     useEffect(() => {
-        fetchAllTheUserLightsabers(dispatch, localStorageCurrentUser.id);
-        fetchUser(localStorageCurrentUser.id, userDispatch);
+        if (localStorageCurrentUser) {
+           fetchAllTheUserLightsabers(dispatch, localStorageCurrentUser.id);
+            fetchUser(localStorageCurrentUser.id, userDispatch); 
+        }
     }, []);
 
     function displayLightsabersForSale () {
@@ -89,31 +91,38 @@ export default function Inventory () {
                 }
             }
             var displayArrayOfSabers = arrayOfSabers.map((lightsaber) => {
-                return <UserLightsaber updateLightsaberListing={updateLightsaberListing} dispatch={dispatch} lightsaber={lightsaber}/>
+                return <UserLightsaber 
+                    updateLightsaberListing={updateLightsaberListing} 
+                    dispatch={dispatch} 
+                    lightsaber={lightsaber}/>
             })
             return displayArrayOfSabers.reverse();
         }
     }
 
-    return (
-        <div>
-            <UserInfo userState={userState}/>
+    if (localStorageCurrentUser) {
+        return (
+            <div>
+                <UserInfo userState={userState}/>
 
-            <h1>Inventory for Sale:</h1>
-            <div class="all-lightsabers-container">
-                {displayLightsabersForSale()}
+                <h1>Inventory for Sale:</h1>
+                <div class="all-lightsabers-container">
+                    {displayLightsabersForSale()}
+                </div>
+                
+                <div class="clearfix"></div>
+
+                <h1>Inventory Not for Sale:</h1>
+                <div class="all-lightsabers-container">
+                    {displayLightsabersNotForSale()}
+                </div>
+
+                <div class="clearfix"></div>
+                
             </div>
-            
-            <div class="clearfix"></div>
-
-            <h1>Inventory Not for Sale:</h1>
-            <div class="all-lightsabers-container">
-                {displayLightsabersNotForSale()}
-            </div>
-
-            <div class="clearfix"></div>
-
-            <CreateSaleForm currentState={state} />
-        </div>
-    )
+        )    
+    } else {
+       return <h1 class="greeting-logged-in">You are not logged in. Click <Link to="/login">Here</Link> to login or <Link to="/signup">Here</Link> to sign up.</h1>
+    }
+    
 }
