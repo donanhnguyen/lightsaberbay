@@ -67,9 +67,8 @@ export default function Marketplace(props) {
     var [state, dispatch] = useReducer(lightsaberReducer, []);
     var [userState, userDispatch] = useReducer(userReducer);
     var [filterState, setFilterState] = useState({
-        color: null,
-        style: null,
-        sortBy: null,
+        color: "None",
+        style: "None",
     })
     var [sortState, setSortState] = useState({sortBy: null})
 
@@ -107,57 +106,123 @@ export default function Marketplace(props) {
         }
     }
 
-    const displayAllLightsabersForSale = state.map((lightsaber) => {
-        if (lightsaber.forsale) {
-            return (
-                <div><Lightsaber 
-                    buyLightsaber={buyLightsaber} 
-                    dispatch={dispatch} 
-                    lightsaber={lightsaber}
-                    userDispatch={userDispatch}
-                    userState={userState}
-                    updateUsersCredits={updateUsersCredits}
-                />
-                </div>
-            )
-        }
-    });
+    // const displayAllLightsabersForSale = state.map((lightsaber) => {
+    //     if (lightsaber.forsale) {
+    //         return (
+    //             <div><Lightsaber 
+    //                 buyLightsaber={buyLightsaber} 
+    //                 dispatch={dispatch} 
+    //                 lightsaber={lightsaber}
+    //                 userDispatch={userDispatch}
+    //                 userState={userState}
+    //                 updateUsersCredits={updateUsersCredits}
+    //             />
+    //             </div>
+    //         )
+    //     }
+    // });
 
-    function displayAllLightsabersAfterFiltered () {
-        var filterStateKeysArray = Object.keys(filterState);
-        var noFiltersAtAll = filterStateKeysArray.every((category) => filterState[category] === null || filterState[category] === "None");
-        if (noFiltersAtAll) {
-            return displayAllLightsabersForSale.reverse();
-        }
-
-        // multiple filters part
-        // var newArray = [];
-        
-        // for (let i = 0; i < filterStateKeysArray.length; i++) {
-        //     var currentKey = filterStateKeysArray[i];
-        //     for (let j = 0; j < state.length; j++) {
-        //         var currentSaber = state[j];
-        //         if (currentSaber.forsale) {
-        //             if (filterState[currentKey] === currentSaber[currentKey]) {
-        //                newArray.push(currentSaber) 
-        //             }
-        //         }
-        //     }
-        // }
-        // return newArray.map((lightsaber) => (
-        //     <div><Lightsaber 
-        //         buyLightsaber={buyLightsaber} 
-        //         dispatch={dispatch} 
-        //         lightsaber={lightsaber}
-        //         userDispatch={userDispatch}
-        //         userState={userState}
-        //         updateUsersCredits={updateUsersCredits}
-        //         />
-        //     </div>
-        // ));
+    const mapLightsabers = (array) => {
+       return array.map((lightsaber) => {
+            if (lightsaber.forsale) {
+                return (
+                    <div><Lightsaber 
+                        buyLightsaber={buyLightsaber} 
+                        dispatch={dispatch} 
+                        lightsaber={lightsaber}
+                        userDispatch={userDispatch}
+                        userState={userState}
+                        updateUsersCredits={updateUsersCredits}
+                    />
+                    </div>
+                )
+            }  
+        })
     };
 
-    console.log(filterState);
+    function displayAllLightsabersAfterFiltered () {
+        var endArray;
+        var filterStateKeysArray = Object.keys(filterState);
+
+        // if return lightsabers if no filters are selected:
+
+        var noFiltersAtAll = filterStateKeysArray.every((category) => filterState[category] === "None");
+        if (noFiltersAtAll) {
+            if (!sortState.sortBy) {
+                endArray = state.reverse();
+            } else if (sortState.sortBy === "Most Recent") {
+            
+                endArray = state.sort((a, b) => {
+                    var keyA = new Date(a.updated_at),
+                        keyB = new Date(b.updated_at);
+                        return keyB - keyA;
+                })
+
+            } else if (sortState.sortBy === "PriceLowToHigh") {
+                endArray = state.sort((a, b) => a.price - b.price);
+            } else if (sortState.sortBy === "PriceHighToLow") {
+                endArray = state.sort((a, b) => b.price - a.price);
+            }
+            return mapLightsabers(endArray);
+        };
+
+        // return the array if filters are selected:
+       
+        var numberOfActiveFilters = 0;
+        filterStateKeysArray.forEach((key) => {
+            if (filterState[key] !== "None") {numberOfActiveFilters +=1 }
+        })
+
+        var newArray = [];
+
+        if (numberOfActiveFilters === 1) {
+            for (let i = 0; i < filterStateKeysArray.length; i++) {
+                var currentKey = filterStateKeysArray[i];
+                if (filterState[currentKey] === "None")  {
+                    continue;
+                }
+                for (let j = 0; j < state.length; j++) {
+                    var currentSaber = state[j];
+                    if (currentSaber.forsale) {
+                        if (filterState[currentKey] === currentSaber[currentKey]) {
+                           newArray.push(currentSaber) 
+                        }
+                    }
+                }
+            }
+        } else if (numberOfActiveFilters === 2) {
+            for (let j = 0; j < state.length; j++) {
+                var currentSaber = state[j];
+                var key1 = filterStateKeysArray[0];
+                var key2 = filterStateKeysArray[1];
+                if (filterState[key1] === currentSaber[key1] && filterState[key2] === currentSaber[key2]) {
+                    newArray.push(currentSaber);
+                }
+            }
+        }
+        
+        // handle sorting the array based on 'Sort By':
+
+        var lastArrayAfterFiltered = [];
+        if (!sortState.sortBy) {
+            lastArrayAfterFiltered = newArray.reverse();
+        } else if (sortState.sortBy === "Most Recent") {
+        
+            lastArrayAfterFiltered = newArray.sort((a, b) => {
+                var keyA = new Date(a.updated_at),
+                    keyB = new Date(b.updated_at);
+                    return keyB - keyA;
+            })
+
+        } else if (sortState.sortBy === "PriceLowToHigh") {
+            lastArrayAfterFiltered = newArray.sort((a, b) => a.price - b.price);
+        } else if (sortState.sortBy === "PriceHighToLow") {
+            lastArrayAfterFiltered = newArray.sort((a, b) => b.price - a.price);
+        }
+
+        return mapLightsabers(lastArrayAfterFiltered);
+        
+    };
 
     if (localStorageCurrentUser) {
         return (
@@ -171,7 +236,7 @@ export default function Marketplace(props) {
                     <option value="none" selected disabled hidden> 
                         Color
                     </option> 
-                        <option value={null}>None</option> 
+                        <option value={"None"}>None</option> 
                         <option value="blue">blue</option> 
                         <option value="red">red </option> 
                         <option value="yellow">yellow</option> 
@@ -183,7 +248,7 @@ export default function Marketplace(props) {
                     <option value="none" selected disabled hidden> 
                         Style
                     </option> 
-                        <option value={null}>None</option> 
+                        <option value={"None"}>None</option> 
                         <option value="single">Single-Bladed</option> 
                         <option value="double">Double-Bladed </option> 
                 </select>
@@ -201,7 +266,6 @@ export default function Marketplace(props) {
             <div class="clearfix"></div>
             
             <div class="all-lightsabers-container">
-                {/* {displayAllLightsabersForSale.reverse()} */}
                 {displayAllLightsabersAfterFiltered()}
             </div>
             

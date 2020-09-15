@@ -80,8 +80,16 @@
 }
 
 .filters-bar {
-    border: 1px solid white;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+.filters-bar select {
     font-size: 20px;
+    min-width: 30%;
+    text-align-last: center;
 }
 
 .add-to-cart-button {
