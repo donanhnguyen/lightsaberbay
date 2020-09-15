@@ -66,6 +66,12 @@ export default function Marketplace(props) {
     var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
     var [state, dispatch] = useReducer(lightsaberReducer, []);
     var [userState, userDispatch] = useReducer(userReducer);
+    var [filterState, setFilterState] = useState({
+        color: null,
+        style: null,
+        sortBy: null,
+    })
+    var [sortState, setSortState] = useState({sortBy: null})
 
     useEffect(() => {
         if (localStorageCurrentUser) {
@@ -79,6 +85,27 @@ export default function Marketplace(props) {
             dispatch({type: "unmountAllLightsabers"})
         }
     }, [])
+
+
+    function handleChangeFilter (category) {
+        return (event) => {
+            if (event.target.value) {
+                setFilterState({...filterState,
+                    [category]: event.target.value
+                })
+            }
+            
+        }
+    }
+
+    function handleChangeSortFilter (category) {
+        return (event) => {
+            if (event.target.value) {
+                setSortState({[category]: event.target.value})
+            }
+            
+        }
+    }
 
     const displayAllLightsabersForSale = state.map((lightsaber) => {
         if (lightsaber.forsale) {
@@ -95,6 +122,43 @@ export default function Marketplace(props) {
             )
         }
     });
+
+    function displayAllLightsabersAfterFiltered () {
+        var filterStateKeysArray = Object.keys(filterState);
+        var noFiltersAtAll = filterStateKeysArray.every((category) => filterState[category] === null || filterState[category] === "None");
+        if (noFiltersAtAll) {
+            return displayAllLightsabersForSale.reverse();
+        }
+
+        // multiple filters part
+        // var newArray = [];
+        
+        // for (let i = 0; i < filterStateKeysArray.length; i++) {
+        //     var currentKey = filterStateKeysArray[i];
+        //     for (let j = 0; j < state.length; j++) {
+        //         var currentSaber = state[j];
+        //         if (currentSaber.forsale) {
+        //             if (filterState[currentKey] === currentSaber[currentKey]) {
+        //                newArray.push(currentSaber) 
+        //             }
+        //         }
+        //     }
+        // }
+        // return newArray.map((lightsaber) => (
+        //     <div><Lightsaber 
+        //         buyLightsaber={buyLightsaber} 
+        //         dispatch={dispatch} 
+        //         lightsaber={lightsaber}
+        //         userDispatch={userDispatch}
+        //         userState={userState}
+        //         updateUsersCredits={updateUsersCredits}
+        //         />
+        //     </div>
+        // ));
+    };
+
+    console.log(filterState);
+
     if (localStorageCurrentUser) {
         return (
         <div id="marketplace-container">
@@ -103,10 +167,11 @@ export default function Marketplace(props) {
             <UserInfo userState={userState}/>
 
             <div class="filters-bar">
-                <select name="colorfilter" id="colorfilter"> 
+                <select onChange={handleChangeFilter("color")} name="colorfilter" id="colorfilter"> 
                     <option value="none" selected disabled hidden> 
                         Color
                     </option> 
+                        <option value={null}>None</option> 
                         <option value="blue">blue</option> 
                         <option value="red">red </option> 
                         <option value="yellow">yellow</option> 
@@ -114,27 +179,30 @@ export default function Marketplace(props) {
                         <option value="purple">purple</option> 
                 </select> 
 
-                <select name="style" id="style"> 
+                <select onChange={handleChangeFilter("style")} name="style" id="style"> 
                     <option value="none" selected disabled hidden> 
                         Style
                     </option> 
+                        <option value={null}>None</option> 
                         <option value="single">Single-Bladed</option> 
                         <option value="double">Double-Bladed </option> 
                 </select>
 
-                <select name="sortBy" id="color"> 
+                <select onChange={handleChangeSortFilter("sortBy")} name="sortBy" id="sortBy"> 
                     <option value="none" selected disabled hidden> 
                         Sort By
                     </option> 
                         <option value="Most Recent">Most Recent</option> 
-                        <option value="Price">Price</option> 
+                        <option value="PriceLowToHigh">Price: Low to High</option> 
+                        <option value="PriceHighToLow">Price: High to Low</option>
                 </select> 
             </div>
 
             <div class="clearfix"></div>
             
             <div class="all-lightsabers-container">
-                {displayAllLightsabersForSale.reverse()}
+                {/* {displayAllLightsabersForSale.reverse()} */}
+                {displayAllLightsabersAfterFiltered()}
             </div>
             
         </div>
