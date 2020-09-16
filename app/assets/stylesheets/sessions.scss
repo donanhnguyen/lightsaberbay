@@ -4,24 +4,28 @@
 
 .session-form-container {
    display: flex; 
+   min-height: 550px;
 }
 .session-form {
     margin: auto;
-    width: 900px;
+    width: 50%;
     text-align: center;
-    padding: 100px;
-    font-size: 20px;
-    color: rgb(15, 33, 91);
-    background: image-url('logInBackground.jpg') rgb(138, 169, 208);
-    background-size: 100% 100%;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
 }
+
+.session-side-picture {
+    background: image-url('Coruscant.jpg') rgb(138, 169, 208);
+    background-size: 100% 100%; 
+    width: 50%;
+}
+
 .session-submit-button {
     padding: 7px;
     font-size: 17px;
-    border-radius: 5px;
     min-width: 150px;
     color: white;
-    background-color: rgb(24, 74, 150);
+    background-color: rgba(30, 117, 223, 0.845);
 }
 .session-submit-button:hover {
     background-color: rgb(230, 91, 91);
