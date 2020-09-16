@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
-import * as LightsaberAPIUtil from '../util/lightsaber_api_util'
 
-export default function UserLightsaber({updateLightsaberListing, dispatch, lightsaber}) {
+export default function UserLightsaber({updateLightsaberListing, dispatch, lightsaber, key}) {
 
-    var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
     var [editingMode, changeEditMode] = useState(false);
     var [currentLightsaberPrice, changePrice] = useState(lightsaber.price);
 
-
     function handleListOrUnlist (lightsaber) {
         var stateObject = {...lightsaber, forsale: !lightsaber.forsale};
-        updateLightsaberListing(stateObject, stateObject.user_id, stateObject.id, dispatch);
+        updateLightsaberListing(stateObject, lightsaber.user_id, lightsaber.id, dispatch);
+        changeEditMode(false);        
     }
 
     const sellOrNotButton = () => {
@@ -28,11 +26,16 @@ export default function UserLightsaber({updateLightsaberListing, dispatch, light
     function submitChangeOfPrice () {
         var newLightsaberObject = {...lightsaber, price: parseInt(currentLightsaberPrice) };
         updateLightsaberListing(newLightsaberObject, lightsaber.user_id, lightsaber.id, dispatch)
-        changeEditMode((prevState) => !prevState);
+        changeEditMode(false);
     }
 
     function handleToggleEditMode () {
         changeEditMode((prevState) => !prevState);
+    }
+
+    function handleCancelEdit () {
+        changeEditMode(false);
+        changePrice(lightsaber.price);
     }
 
     function editOrNotButton () {
@@ -41,12 +44,12 @@ export default function UserLightsaber({updateLightsaberListing, dispatch, light
         } else {
             return <div>
                     <input onChange={handleChangePrice} type="number" id="newPrice "name="newPrice"></input>
-                    <button class="inventory-lightsaber-button" onClick={handleToggleEditMode}>Cancel</button>
                     <button class="inventory-lightsaber-button" onClick={submitChangeOfPrice}>Change Price</button>
+                    <button class="inventory-lightsaber-button" onClick={handleCancelEdit}>Cancel</button>
                 </div>
         }
     }
-
+    
     return (
         <div class={`lightsaber-item ${lightsaber.color + lightsaber.style}`}>
             <h1>{lightsaber.name}</h1>

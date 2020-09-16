@@ -76,7 +76,7 @@ export default function Inventory () {
                 }
             }
             var displayArrayOfSabers = arrayOfSabers.map((lightsaber) => {
-                return <UserLightsaber updateLightsaberListing={updateLightsaberListing} dispatch={dispatch} lightsaber={lightsaber}/>
+                return <UserLightsaber key={lightsaber.id} updateLightsaberListing={updateLightsaberListing} dispatch={dispatch} lightsaber={lightsaber}/>
             })
             return displayArrayOfSabers;
         }
@@ -91,7 +91,8 @@ export default function Inventory () {
                 }
             }
             var displayArrayOfSabers = arrayOfSabers.map((lightsaber) => {
-                return <UserLightsaber 
+                return <UserLightsaber
+                    key={lightsaber.id} 
                     updateLightsaberListing={updateLightsaberListing} 
                     dispatch={dispatch} 
                     lightsaber={lightsaber}/>
