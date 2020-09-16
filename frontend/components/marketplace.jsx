@@ -209,6 +209,14 @@ export default function Marketplace(props) {
         
     };
 
+    function displayNumberOfResults () {
+        if (displayAllLightsabersAfterFiltered().length > 0) {
+            return <h1>Displaying {displayAllLightsabersAfterFiltered().length} results:</h1>
+        } else {
+            return <h1 class='loading-results'>Loading Results...</h1>
+        }
+    }
+
     if (localStorageCurrentUser) {
         return (
         <div id="marketplace-container">
@@ -249,7 +257,7 @@ export default function Marketplace(props) {
             </div>
 
             <div class="clearfix"></div>
-                <h1>Displaying {displayAllLightsabersAfterFiltered().length} results:</h1>
+                {displayNumberOfResults()}
             <div class="clearfix"></div>
 
             <div class="all-lightsabers-container">

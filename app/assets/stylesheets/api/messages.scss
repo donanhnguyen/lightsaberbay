@@ -8,6 +8,15 @@
     font-size: 20px;
 }
 
+.loading-results {
+  font-size: 20px;
+  -webkit-animation: breathing 2.0s ease-out infinite normal;
+  animation: breathing 2.0s ease-out infinite normal;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgb(255, 255, 255);
+  -webkit-font-smoothing: antialiased; 
+  }
+
 .new-messages {
     font-size: 30px;
     -webkit-animation: breathing 3.0s ease-out infinite normal;
