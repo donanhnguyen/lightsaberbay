@@ -147,7 +147,8 @@ export default function Marketplace(props) {
             } else if (sortState.sortBy === "PriceHighToLow") {
                 endArray = state.sort((a, b) => b.price - a.price);
             }
-            return mapLightsabers(endArray);
+            var endArray1 = endArray.filter((saber) => saber.forsale);
+            return mapLightsabers(endArray1);
         };
 
         // return the array if filters are selected:
@@ -208,7 +209,6 @@ export default function Marketplace(props) {
         
     };
 
-
     if (localStorageCurrentUser) {
         return (
         <div id="marketplace-container">
@@ -249,7 +249,9 @@ export default function Marketplace(props) {
             </div>
 
             <div class="clearfix"></div>
-            
+                <h1>Displaying {displayAllLightsabersAfterFiltered().length} results:</h1>
+            <div class="clearfix"></div>
+
             <div class="all-lightsabers-container">
                 {displayAllLightsabersAfterFiltered()}
             </div>

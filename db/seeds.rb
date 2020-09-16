@@ -32,7 +32,7 @@ defaultLightsabers = admin.lightsabers.create!([
     {name: "Darth Revan's Lightsaber", forsale: true, color: "purple", style: "single", price: 500},
     {name: "Leia's Training Lightsaber", forsale: true, color: "blue", style: "single", price: 50},
     {name: "Rey Skywalker's Lightsaber", forsale: true, color: "yellow", style: "single", price: 300},
-    {name: "Count Dooku's Lightsaber", forsale: true, color: "red", style: "single", price: 400},
+    {name: "PeaceSeeker", forsale: true, color: "yellow", style: "single", price: 300},
     {name: "Darth Vuxron's Lightsaber", forsale: true, color: "red", style: "double", price: 200},
     {name: "Suthee Doko's Lightsaber", forsale: true, color: "blue", style: "single", price: 60},
     {name: "Qwan Calister's Lightsaber", forsale: true, color: "green", style: "single", price: 200},

@@ -78,7 +78,7 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
         <div class={`lightsaber-item ${lightsaber.color + lightsaber.style}`}>
             <h1>{lightsaber.name}</h1>
             <h1>Seller: {lightsaber.owner}</h1>
-            <h1>{lightsaber.price} Credits</h1>
+            <h1 style={{color: 'rgb(89, 213, 250)'}}>{lightsaber.price} Credits</h1>
             <h1>Listed on {displayLightsaberDate}</h1>
 
             <div>
