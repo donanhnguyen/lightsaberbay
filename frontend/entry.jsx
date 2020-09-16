@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.onbeforeunload = function (e) {
         localStorage.clear();
     };
+    
     const store = configureStore();
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store} />, root);
