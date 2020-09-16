@@ -69,7 +69,7 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
             if (userState.id !== lightsaber.user_id) {
                 return <button onClick={handleBuyLightsaber} class="add-to-cart-button">Buy</button>;
             } else {
-                return <h1>Your Listing</h1>
+                return <h1 class='your-listing'>Your Listing</h1>
             }
         }
     }
@@ -79,7 +79,7 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
             <h1>{lightsaber.name}</h1>
             <h1>Seller: {lightsaber.owner}</h1>
             <h1 style={{color: 'rgb(89, 213, 250)'}}>{lightsaber.price} Credits</h1>
-            <h1>Listed on {displayLightsaberDate}</h1>
+            <h1 class='lightsaber-listed-date'>Listed on {displayLightsaberDate}</h1>
 
             <div>
                 {buyButtonOrNot()}

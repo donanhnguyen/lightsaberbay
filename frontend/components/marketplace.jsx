@@ -110,7 +110,8 @@ export default function Marketplace(props) {
        return array.map((lightsaber) => {
             if (lightsaber.forsale) {
                 return (
-                    <div><Lightsaber 
+                    <div><Lightsaber
+                        key={lightsaber.id} 
                         buyLightsaber={buyLightsaber} 
                         dispatch={dispatch} 
                         lightsaber={lightsaber}
@@ -230,7 +231,7 @@ export default function Marketplace(props) {
                         Color
                     </option> 
                         <option value={"None"}>None</option> 
-                        <option class="blue" value="blue">blue</option> 
+                        <option class="blue" value="blue">blue</option>
                         <option class="red" value="red">red </option> 
                         <option class="yellow" value="yellow">yellow</option> 
                         <option class="green" value="green">green</option> 
