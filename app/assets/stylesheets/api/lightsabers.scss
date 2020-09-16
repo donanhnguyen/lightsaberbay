@@ -33,6 +33,24 @@
 .greendouble {
     background-image: image-url('greendouble.jpg');
 }
+
+.blue {
+    color: rgb(0, 94, 255);
+}
+.green {
+    color: rgb(0, 203, 0);
+}
+.yellow {
+    color: rgb(249, 249, 0);
+}
+.red {
+    color: rgb(255, 35, 35);
+}
+.purple {
+    color: rgb(142, 0, 142);
+}
+
+
 // //////
 
 
@@ -122,7 +140,7 @@
 .message {
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
-    background-color: rgba(144, 211, 255, 0.714);
+    background-color: rgba(240, 240, 240, 0.988);
     margin: 10px;
 }
 .message p {

@@ -1,5 +1,5 @@
-import React, { useState, useReducer, useEffect } from 'react'
-import {Redirect, Link} from 'react-router-dom';
+import React, {useReducer, useEffect } from 'react'
+import {Link} from 'react-router-dom';
 import * as MessageAPIUtil from '../util/message_api_util';
 import Message from './message';
 

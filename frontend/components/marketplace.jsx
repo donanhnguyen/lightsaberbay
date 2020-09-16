@@ -106,22 +106,6 @@ export default function Marketplace(props) {
         }
     }
 
-    // const displayAllLightsabersForSale = state.map((lightsaber) => {
-    //     if (lightsaber.forsale) {
-    //         return (
-    //             <div><Lightsaber 
-    //                 buyLightsaber={buyLightsaber} 
-    //                 dispatch={dispatch} 
-    //                 lightsaber={lightsaber}
-    //                 userDispatch={userDispatch}
-    //                 userState={userState}
-    //                 updateUsersCredits={updateUsersCredits}
-    //             />
-    //             </div>
-    //         )
-    //     }
-    // });
-
     const mapLightsabers = (array) => {
        return array.map((lightsaber) => {
             if (lightsaber.forsale) {
@@ -224,24 +208,25 @@ export default function Marketplace(props) {
         
     };
 
+
     if (localStorageCurrentUser) {
         return (
         <div id="marketplace-container">
             <div class="clearfix"></div>
 
             <UserInfo userState={userState}/>
-
+         
             <div class="filters-bar">
                 <select onChange={handleChangeFilter("color")} name="colorfilter" id="colorfilter"> 
                     <option value="none" selected disabled hidden> 
                         Color
                     </option> 
                         <option value={"None"}>None</option> 
-                        <option value="blue">blue</option> 
-                        <option value="red">red </option> 
-                        <option value="yellow">yellow</option> 
-                        <option value="green">green</option> 
-                        <option value="purple">purple</option> 
+                        <option class="blue" value="blue">blue</option> 
+                        <option class="red" value="red">red </option> 
+                        <option class="yellow" value="yellow">yellow</option> 
+                        <option class="green" value="green">green</option> 
+                        <option class="purple" value="purple">purple</option> 
                 </select> 
 
                 <select onChange={handleChangeFilter("style")} name="style" id="style"> 
