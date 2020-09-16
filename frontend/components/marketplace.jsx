@@ -180,8 +180,10 @@ export default function Marketplace(props) {
                 var currentSaber = state[j];
                 var key1 = filterStateKeysArray[0];
                 var key2 = filterStateKeysArray[1];
-                if (filterState[key1] === currentSaber[key1] && filterState[key2] === currentSaber[key2]) {
-                    newArray.push(currentSaber);
+                if (currentSaber.forsale) {
+                    if (filterState[key1] === currentSaber[key1] && filterState[key2] === currentSaber[key2]) {
+                        newArray.push(currentSaber);
+                    }
                 }
             }
         }
@@ -212,8 +214,6 @@ export default function Marketplace(props) {
     function displayNumberOfResults () {
         if (displayAllLightsabersAfterFiltered().length > 0) {
             return <h1>Displaying {displayAllLightsabersAfterFiltered().length} results:</h1>
-        } else {
-            return <h1 class='loading-results'>Loading Results...</h1>
         }
     }
 
