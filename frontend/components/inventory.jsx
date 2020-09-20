@@ -106,14 +106,14 @@ export default function Inventory () {
             <div>
                 <UserInfo userState={userState}/>
 
-                <h1>Inventory for Sale:</h1>
+                <h1>Listed for Sale:</h1>
                 <div class="all-lightsabers-container">
                     {displayLightsabersForSale()}
                 </div>
                 
                 <div class="clearfix"></div>
 
-                <h1>Inventory Not for Sale:</h1>
+                <h1>Not Listed for Sale:</h1>
                 <div class="all-lightsabers-container">
                     {displayLightsabersNotForSale()}
                 </div>
