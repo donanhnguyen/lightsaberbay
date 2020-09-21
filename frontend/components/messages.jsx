@@ -43,14 +43,26 @@ export default function Messages () {
         }
     }, [])
 
-    const displayMessages = messagesState.map((message) => {
-        return <Message message={message} updateMessageRead={updateMessageRead} dispatch={dispatchMessages}/>
-    })
+    function displayMessages () {
+        var messagesSorted = messagesState.sort((a, b) => {
+            var keyA = new Date(a.created_at),
+                keyB = new Date(b.created_at);
+                return keyB - keyA;
+        })
+        return messagesSorted.map((message) => {
+            return <Message 
+                    key={message.id}
+                    message={message} 
+                    updateMessageRead={updateMessageRead} 
+                    dispatch={dispatchMessages}
+                    />
+        })
+    }
 
     if (localStorageCurrentUser) {
         return (
             <div>
-                {displayMessages.reverse()}
+                {displayMessages()}
             </div>
         )
     } else {
