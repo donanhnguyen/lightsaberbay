@@ -78,21 +78,22 @@ a:hover {
 }
 .nav-bar-list {
     padding: 0;
+    display: flex;
+    justify-content: space-evenly;
 }
 .nav-bar-list li {
     padding: 17px;
-    float: left;
+  
 }
 .nav-link {
     margin: 0;
     padding: 7px;
-    color: rgb(108, 154, 238);
+    color: rgb(255, 255, 255);
     text-decoration: none;
-    border-radius: 25px;
+
 }
 .nav-link-hover:hover {
-    background-color: rgb(108, 154, 238);
-    color: rgb(255, 255, 255);
+    color: rgb(25, 148, 255);
     text-decoration: none;
 }
 .session-link-hover:hover {
