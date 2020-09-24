@@ -31,7 +31,7 @@ import {
                                 <li> <Link class={'nav-link nav-link-hover'} to="/inventory">Inventory</Link></li>          
                                 <li> <Link class={'nav-link nav-link-hover'} to="/messages">Messages</Link></li>     
                                 <li>
-                                    <button class={'logout-button'} onClick={this.logout.bind(this)}>Logout</button>
+                                    <button class={'logout-button'} onClick={this.logout.bind(this)}>Log Out</button>
                                 </li>
                             </ul>
 
@@ -46,10 +46,10 @@ import {
                                 <li> <Link class={'tc-link nav-link nav-link-hover'} to="/">Home</Link> </li>
                                 <li> <Link class={'nav-link nav-link-hover'} to="/login">Marketplace</Link></li>   
                                 <li>
-                                    <Link class={'nav-link nav-link-hover'} to="/login">LogIn</Link>
+                                    <Link class={'nav-link nav-link-hover'} to="/login">Log In</Link>
                                 </li>
                                 <li>
-                                    <Link class={'nav-link nav-link-hover'} to="/signup">SignUp</Link>
+                                    <Link class={'nav-link nav-link-hover'} to="/signup">Sign Up</Link>
                                 </li>
                             </ul>
                 
