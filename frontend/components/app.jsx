@@ -8,6 +8,7 @@ import SessionFormContainer from './session_form_container';
 import Marketplace from './marketplace';
 import Inventory from './inventory';
 import Messages from './messages';
+import Cart from './cart';
 
 class App extends React.Component {
 
@@ -23,6 +24,7 @@ class App extends React.Component {
                 <Route path="/marketplace" component={Marketplace} />
                 <Route path="/Inventory" component={Inventory} />
                 <Route path="/messages" component={Messages} />
+                <Route path='/cart' component={Cart} />
                 <AuthRoute path="/login" component={SessionFormContainer} />
                 <AuthRoute path="/signup" component={SessionFormContainer} />
                 <div class='clearfix'></div>
