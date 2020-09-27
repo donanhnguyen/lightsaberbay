@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function StarWarsText() {
     return (
-        <div>
+        <div class='starwarstextcontainer'>
             <div class="fade"></div>
                 <section class="star-wars">
 

@@ -42,8 +42,7 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
     function handleBuyLightsaber () {
         var lightsaberState1 = {...lightsaber, user_id: userState.id, forsale: false};
         var userObject = {...userState, credits: userState.credits - lightsaber.price};
-        var otherUserObject = {...otherUserState, credits: otherUserState.credits + lightsaber.price}
-        // var otherUserObject = {credits: otherUserState.credits + lightsaber.price}
+        var otherUserObject = {credits: otherUserState.credits + lightsaber.price}
 
         var messageToSellerObject = {
             sender: userState.username,

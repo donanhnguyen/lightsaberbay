@@ -134,15 +134,17 @@ export default function Marketplace(props) {
         var noFiltersAtAll = filterStateKeysArray.every((category) => filterState[category] === "None");
         if (noFiltersAtAll) {
             if (!sortState.sortBy) {
-                endArray = state.reverse();
+                endArray = state.sort((a, b) => {
+                    var keyA = new Date(a.updated_at),
+                        keyB = new Date(b.updated_at);
+                        return keyB - keyA;
+                });
             } else if (sortState.sortBy === "Most Recent") {
-            
                 endArray = state.sort((a, b) => {
                     var keyA = new Date(a.updated_at),
                         keyB = new Date(b.updated_at);
                         return keyB - keyA;
                 })
-
             } else if (sortState.sortBy === "PriceLowToHigh") {
                 endArray = state.sort((a, b) => a.price - b.price);
             } else if (sortState.sortBy === "PriceHighToLow") {
