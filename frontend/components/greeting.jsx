@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link,} from 'react-router-dom';
 import Notifications from './notifications';
-import StarWarsText from './starwarstext';
 
 class Greeting extends React.Component {
 
@@ -40,9 +39,6 @@ class Greeting extends React.Component {
                 <div class="greeting-container">
                     <h1>Lightsaber Bay</h1>
                     <p>Marketplace for a Jedi's Weapon</p>
-                </div>
-                <div>
-                    <StarWarsText />
                 </div>
             </div>
         )
