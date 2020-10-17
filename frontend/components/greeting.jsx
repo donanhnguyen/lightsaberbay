@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link,} from 'react-router-dom';
 import Notifications from './notifications';
+import Highlights from './highlights';
 
 class Greeting extends React.Component {
 
@@ -40,6 +41,9 @@ class Greeting extends React.Component {
                     <h1>Lightsaber Bay</h1>
                     <p>Marketplace for a Jedi's Weapon</p>
                 </div>
+
+                <Highlights />
+
             </div>
         )
     }
