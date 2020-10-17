@@ -31,7 +31,15 @@ export default function Highlights() {
                     keyB = new Date(b.updated_at);
                     return keyB - keyA;
             });
-            var finalArray = endArray.slice(0, 3);
+
+            var sabersForSale = [];
+            endArray.forEach((saber) => {
+                if (saber.forsale) {
+                    sabersForSale.push(saber);
+                }
+            })
+
+            var finalArray = sabersForSale.slice(0, 3);
 
             const displayArray = finalArray.map((lightsaber) => {
                 var lightsaberDate = lightsaber.updated_at.split("")
