@@ -64,6 +64,9 @@ a:hover {
     width: 100%;
     color: gray; 
     min-height: 40px;
+    border-top: 1px solid rgb(126, 126, 126);
+    border-bottom: 1px solid rgb(126, 126, 126);
+    background-image: linear-gradient(to bottom right, rgb(7, 7, 7), rgb(72, 113, 167));
 }
 .left {
     float: left;
@@ -82,17 +85,19 @@ a:hover {
 }
 .nav-bar-list li {
     padding: 17px;
-  
+    text-align: center;
+}
+.nav-bar-list li:hover {
+    color: rgb(79, 200, 244);
 }
 .nav-link {
     margin: 0;
     padding: 7px;
     color: rgb(255, 255, 255);
     text-decoration: none;
-
 }
 .nav-link-hover:hover {
-    color: rgb(25, 148, 255);
+    color: rgb(113, 196, 247);
     text-decoration: none;
 }
 .session-link-hover:hover {
