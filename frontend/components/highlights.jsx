@@ -1,5 +1,6 @@
 import React, {useReducer, useState, useEffect} from 'react'
 import * as LightsaberAPIUtil from '../util/lightsaber_api_util';
+import {Link} from 'react-router-dom';
 
 const lightsaberReducer = (state, action) => {
     switch(action.type) {
@@ -50,6 +51,7 @@ export default function Highlights() {
                     <h1>Seller: {lightsaber.owner}</h1>
                     <h1 style={{color: 'rgb(89, 213, 250)'}}>{lightsaber.price} Credits</h1>
                     <h1 class='lightsaber-listed-date'>Listed on {displayLightsaberDate}</h1>
+                    <Link to="/marketplace"><button class="add-to-cart-button">View In Marketplace</button></Link>
                 </div>)
             })
 

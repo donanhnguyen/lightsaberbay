@@ -377,10 +377,10 @@
     display: flex;
     justify-content: space-around;
     padding: 50px;
-    animation: fadein 3.2s;
-    -moz-animation: fadein 3.2s; /* Firefox */
-    -webkit-animation: fadein 3.2s; /* Safari and Chrome */
-    -o-animation: fadein 3.2s; /* Opera */
+    animation: fadein 1.2s;
+    -moz-animation: fadein 1.2s; /* Firefox */
+    -webkit-animation: fadein 1.2s; /* Safari and Chrome */
+    -o-animation: fadein 1.2s; /* Opera */
 }
 .lightsaber-highlight-item{
     border: 1px solid rgb(182, 182, 182);
