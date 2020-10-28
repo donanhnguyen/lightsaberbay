@@ -29,10 +29,13 @@ function sendMessageToSeller (message, user_id) {
     MessageAPIUtil.createMessage(message, user_id);
 }
 
+function addToUsersCart (user, user_id) {
+    UserAPIUtil.addToUserCart(user, user_id);
+}
+
 export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDispatch, userState, updateUsersCredits}) {
     var lightsaberDate = lightsaber.updated_at.split("")
     var displayLightsaberDate = lightsaberDate.slice(5, 7).join("") + "-" + lightsaberDate.slice(8, 10).join("") + "-" + lightsaberDate.slice(0, 4).join("");
-
     var [otherUserState, otherUserDispatch] = useReducer(otherUserReducer);
 
     useEffect(() => {
@@ -67,15 +70,44 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
     var buyButtonOrNot = () => {
         if (userState) {
             if (userState.id !== lightsaber.user_id) {
-                return <button onClick={handleBuyLightsaber} class="add-to-cart-button">Buy Now</button>;
+                return <button onClick={handleBuyLightsaber} class="buy-button">Buy Now</button>;
             } else {
                 return <h1 class='your-listing'>Your Listing</h1>
             }
         }
     }
 
-    const handleAddToCart = () => {
-        console.log('added to cart');
+    const handleAddToCart = (lightsaber) => {
+        let clientsArr = [];
+        if (!localStorage.getItem('Cart')) {
+           clientsArr.push(lightsaber);
+           localStorage.setItem('Cart', JSON.stringify(clientsArr));
+           alert(`Added ${lightsaber.name} to your shopping cart!`);
+        } else {
+           clientsArr = JSON.parse(localStorage.getItem('Cart'));
+           var found = false;
+            for (var i = 0; i < clientsArr.length; i++) {
+                if (clientsArr[i].id === lightsaber.id) {
+                    found = true;
+                    break;
+                }
+            }
+           if (found) {
+               alert("You've already added that item to your cart!");
+           } else {
+               clientsArr.push(lightsaber);
+               localStorage.setItem('Cart', JSON.stringify(clientsArr));
+               alert(`Added ${lightsaber.name} to your shopping cart!`);
+           }
+        }
+    }
+
+    const addToCartButtonOrNot = () => {
+        if (userState) {
+            if (userState.id !== lightsaber.user_id) {
+                return <button onClick={() => {handleAddToCart(lightsaber)}} class='add-to-cart-button'>Add to Cart</button>;
+            }
+        }
     }
 
     return (
@@ -89,7 +121,7 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
                 {buyButtonOrNot()}
             </div>
             <div>
-                <button onClick={handleAddToCart} class='add-to-cart-button'>Add to Cart</button>
+                {addToCartButtonOrNot()}
             </div>
         </div>
     )

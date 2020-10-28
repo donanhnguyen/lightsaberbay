@@ -82,6 +82,7 @@ a:hover {
     padding: 0;
     display: flex;
     justify-content: space-evenly;
+    margin: 0 auto;
 }
 .nav-bar-list li {
     padding: 17px;
@@ -255,6 +256,16 @@ a:hover {
     .greeting-container {
         padding: 85px;
         font-size: 20px;
+    }
+    .nav-bar-list {
+        padding: 0;
+        display: grid;
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        margin: 0 auto;
+    }
+    .nav-bar-list li {
+        padding: 12px;
+        text-align: center;
     }
 }
 @media screen and (max-width: 620px) {

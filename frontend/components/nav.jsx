@@ -17,6 +17,7 @@ import {
     logout () {
         this.props.logout();
         this.props.history.push('/');
+        localStorage.clear();
     }
 
     render () {

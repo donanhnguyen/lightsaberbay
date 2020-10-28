@@ -12,3 +12,11 @@ export const updateUsersCredits = (user, user_id) => {
         data: {user}
     })
 };
+
+export const addToUserCart = (user, user_id) => {
+    return $.ajax({
+        method: 'PUT',
+        url: `api/users/${user_id}`,
+        data: {user}
+    })
+};
