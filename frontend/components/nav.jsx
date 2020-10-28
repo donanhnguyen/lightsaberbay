@@ -30,7 +30,7 @@ import {
                                 <li> <Link class={'nav-link nav-link-hover'} to="/marketplace">Marketplace</Link></li>   
                                 <li> <Link class={'nav-link nav-link-hover'} to="/inventory">Inventory</Link></li>          
                                 <li> <Link class={'nav-link nav-link-hover'} to="/messages">Messages</Link></li>
-                                {/* <li> <Link class={'nav-link nav-link-hover'} to="/cart">Cart</Link></li>          */}
+                                <li> <Link class={'nav-link nav-link-hover'} to="/cart">Cart</Link></li>         
                                 <li>
                                     <button class={'logout-button'} onClick={this.logout.bind(this)}>Log Out</button>
                                 </li>

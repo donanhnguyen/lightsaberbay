@@ -67,11 +67,15 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
     var buyButtonOrNot = () => {
         if (userState) {
             if (userState.id !== lightsaber.user_id) {
-                return <button onClick={handleBuyLightsaber} class="add-to-cart-button">Buy</button>;
+                return <button onClick={handleBuyLightsaber} class="add-to-cart-button">Buy Now</button>;
             } else {
                 return <h1 class='your-listing'>Your Listing</h1>
             }
         }
+    }
+
+    const handleAddToCart = () => {
+        console.log('added to cart');
     }
 
     return (
@@ -83,6 +87,9 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
 
             <div>
                 {buyButtonOrNot()}
+            </div>
+            <div>
+                <button onClick={handleAddToCart} class='add-to-cart-button'>Add to Cart</button>
             </div>
         </div>
     )
