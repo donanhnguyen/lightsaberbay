@@ -20,15 +20,18 @@ class App extends React.Component {
         return (
             <div>
                 <NavContainer />
-                <Route exact path="/" component={GreetingContainer} />
-                <Route path="/marketplace" component={Marketplace} />
-                <Route path="/Inventory" component={Inventory} />
-                <Route path="/messages" component={Messages} />
-                <Route path='/cart' component={Cart} />
-                <AuthRoute path="/login" component={SessionFormContainer} />
-                <AuthRoute path="/signup" component={SessionFormContainer} />
-                <div class='clearfix'></div>
-                <Footer />
+                <div id="all-other-content">
+                   <Route exact path="/" component={GreetingContainer} />
+                    <Route path="/marketplace" component={Marketplace} />
+                    <Route path="/Inventory" component={Inventory} />
+                    <Route path="/messages" component={Messages} />
+                    <Route path='/cart' component={Cart} />
+                    <AuthRoute path="/login" component={SessionFormContainer} />
+                    <AuthRoute path="/signup" component={SessionFormContainer} />
+                    <div class='clearfix'></div>
+                    <Footer /> 
+                </div>
+                
             </div>
         )
     }

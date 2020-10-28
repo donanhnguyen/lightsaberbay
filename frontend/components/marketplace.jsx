@@ -85,7 +85,6 @@ export default function Marketplace(props) {
         }
     }, [])
 
-
     function handleChangeFilter (category) {
         return (event) => {
             if (event.target.value) {
