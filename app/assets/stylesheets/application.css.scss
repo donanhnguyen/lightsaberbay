@@ -259,6 +259,11 @@ a:hover {
         margin: auto;
     }
 }
+@media screen and (max-width: 830px) {
+    #all-other-content {
+        margin-top: 120px;
+    }
+}
 @media screen and (max-width: 815px) {
     .greeting-container {
         padding: 85px;

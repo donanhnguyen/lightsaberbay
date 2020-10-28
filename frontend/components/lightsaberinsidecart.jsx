@@ -1,6 +1,4 @@
-import React, {useReducer, useEffect} from 'react';
-import * as UserAPIUtil from '../util/user_api_util';
-import * as MessageAPIUtil from '../util/message_api_util';
+import React from 'react';
 
 export default function LightsaberInsideCart({lightsaber, buyLightsaber, dispatch, userDispatch, userState, removeFromCart}) {
     var lightsaberDate = lightsaber.updated_at.split("")
@@ -13,8 +11,6 @@ export default function LightsaberInsideCart({lightsaber, buyLightsaber, dispatc
             <h1 style={{color: 'rgb(89, 213, 250)'}}>{lightsaber.price} Credits</h1>
             <h1 class='lightsaber-listed-date'>Listed on {displayLightsaberDate}</h1>
 
-
-            
             <button onClick={() => {removeFromCart(lightsaber)}} class='remove-from-cart-button'>Remove from Cart</button>
         </div>
     )
