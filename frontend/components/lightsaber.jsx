@@ -29,10 +29,6 @@ function sendMessageToSeller (message, user_id) {
     MessageAPIUtil.createMessage(message, user_id);
 }
 
-function addToUsersCart (user, user_id) {
-    UserAPIUtil.addToUserCart(user, user_id);
-}
-
 export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDispatch, userState, updateUsersCredits}) {
     var lightsaberDate = lightsaber.updated_at.split("")
     var displayLightsaberDate = lightsaberDate.slice(5, 7).join("") + "-" + lightsaberDate.slice(8, 10).join("") + "-" + lightsaberDate.slice(0, 4).join("");
