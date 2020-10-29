@@ -9,6 +9,8 @@ const cartReducer = (state, action) => {
         case 'updateUsersCartAfterRemovingOne':
             var newState = state.filter((saber) => saber.id !== action.payload.id);
             return newState;
+        case 'emptyOutCart':
+            return [];
         default:
             return state;
     }
@@ -34,11 +36,11 @@ const otherUserReducer = (state, action) => {
     }
 }
 
-function updateUsersCredits ( user, user_id) {
+function updateUsersCredits (user, user_id) {
     UserAPIUtil.updateUsersCredits(user, user_id);
 }
 
-function updateOtherUsersCredits ( user, user_id ) {
+function updateOtherUsersCredits (user, user_id) {
     UserAPIUtil.updateUsersCredits(user, user_id);
 }
 
@@ -159,37 +161,50 @@ export default function cart() {
         //     }
         // }
 
-       
+        var newUsersCreditsAmount = {...userState, credits: userState.credits - calculatedTotal()};
 
-        console.log("other user state");
-        console.log(otherUserState);
-        // var newUsersCreditsAmount = {...userState, credits: userState.credits - calculatedTotal()};
+        var confirmMessage = confirm(`Are you sure you want to place this order of ${calculatedTotal()} credits?`)
 
-        // var otherUserObject = {credits: otherUserState.credits + lightsaber.price}
-
-        // var confirmMessage = confirm(`Are you sure you want to place this order of ${calculatedTotal()} credits?`)
-
-
-        // if (confirmMessage) {
-        //      if (userState.credits >= calculatedTotal()) {
-        //         updateUsersCredits(newUsersCreditsAmount, userState.id);
-        //         for (let i = 0; i < cartState.length; i++) {
-        //             let currentSaber = cartState[i];
-
-        //             var messageToSellerObject = {
-        //                 sender: userState.username,
-        //                 body: `${userState.username} has purchased your item of ${currentSaber.name} for ${currentSaber.price} credits!`,
-        //                 read: false
-        //             }
-
-        //             var changedLightsaberObject = {...currentSaber, user_id: userState.id, forsale: false};
-        //             buyLightsaber(changedLightsaberObject, currentSaber.id);
-        //             sendMessageToSeller(messageToSellerObject, currentSaber.user_id)
-        //         }
-        //     } else {
-        //         alert("You can't afford this purchase!")
-        //     }
-        // }
+        if (confirmMessage) {
+             if (userState.credits >= calculatedTotal()) {
+                 // gather total of purchase and subtract it from your credits.
+                updateUsersCredits(newUsersCreditsAmount, userState.id);
+                //
+                for (let i = 0; i < cartState.length; i++) {
+                    let currentSaber = cartState[i];
+                    // create message sent to seller.
+                    var messageToSellerObject = {
+                        sender: userState.username,
+                        body: `${userState.username} has purchased your item of ${currentSaber.name} for ${currentSaber.price} credits!`,
+                        read: false
+                    }
+                    //
+                    // find the owner of the lightsaber you're buying, and then pay that user.
+                    var otherUserCreditsChange = null;
+                    var correctUserId = null;
+                    for (let j = 0; j < otherUserState.length; j++) {
+                        var currentUser = otherUserState[j];
+                        if (currentSaber.user_id === currentUser.id) {
+                            otherUserCreditsChange = {...currentUser, credits: currentUser.credits + currentSaber.price};
+                            correctUserId = currentUser.id;
+                            break;
+                        }
+                    }
+                    updateOtherUsersCredits(otherUserCreditsChange, correctUserId);
+                    //
+                    // change user_id of the lightsaber you're buying, and send message to seller.
+                    var changedLightsaberObject = {...currentSaber, user_id: userState.id, forsale: false};
+                    buyLightsaber(changedLightsaberObject, currentSaber.id);
+                    sendMessageToSeller(messageToSellerObject, currentSaber.user_id)
+                    //
+                    // dispatch in order to empty out the cart, so the UI displays empty cart.
+                    cartDispatch({type: 'emptyOutCart'});
+                    //
+                }
+            } else {
+                alert("You can't afford this purchase!")
+            }
+        }
        
     }
 

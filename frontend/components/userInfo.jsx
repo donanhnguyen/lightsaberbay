@@ -11,7 +11,6 @@ export default function UserInfo({userState}) {
     if (userState) {
         return (
             <div class="userInfoBar">
-                {numberOfItemsInYourCart()}
                 Your Credits: {userState.credits}
              </div>
         )
