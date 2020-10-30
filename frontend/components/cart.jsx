@@ -64,7 +64,7 @@ function buyLightsaber (lightsaber, lightsaber_id) {
     LightsaberAPIUtil.buyLightsaber(lightsaber, lightsaber_id);
 }
 
-export default function cart() {
+export default function Cart() {
     var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
     var cartArray = JSON.parse(localStorage.getItem('Cart'));
     var [userState, userDispatch] = useReducer(userReducer);
