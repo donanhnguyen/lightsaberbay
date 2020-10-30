@@ -139,32 +139,15 @@ export default function Cart() {
 
     function handlePlaceOrder () {
 
-        // var lightsaberState1 = {...lightsaber, user_id: userState.id, forsale: false};
-        // var userObject = {...userState, credits: userState.credits - lightsaber.price};
-        // var otherUserObject = {credits: otherUserState.credits + lightsaber.price}
-
-        // var messageToSellerObject = {
-        //     sender: userState.username,
-        //     body: `${userState.username} has purchased your item of ${lightsaber.name} for ${lightsaber.price} credits!`,
-        //     read: false
-        // }
-
-        // var confirmMessage = confirm(`Are you sure you want to purchase ${lightsaber.name} for ${lightsaber.price} credits?`)
-        // if (confirmMessage) {
-        //      if (userState.credits >= lightsaber.price) {
-        //         buyLightsaber(lightsaberState1, lightsaber.id, dispatch);
-        //         updateUsersCredits(userObject, userState.id, userDispatch);
-        //         updateOtherUsersCredits(otherUserObject, lightsaber.user_id, otherUserDispatch);
-        //         sendMessageToSeller(messageToSellerObject, lightsaber.user_id);
-        //     } else {
-        //         alert("You can't afford that item!")
-        //     }
-        // }
-
         var newUsersCreditsAmount = {...userState, credits: userState.credits - calculatedTotal()};
 
-        var confirmMessage = confirm(`Are you sure you want to place this order of ${calculatedTotal()} credits?`)
+        if (!cartState) {
+            alert("There is nothing in your cart.")
+            return;
+        }
 
+        var confirmMessage = confirm(`Are you sure you want to place this order of ${calculatedTotal()} credits?`)
+        
         if (confirmMessage) {
              if (userState.credits >= calculatedTotal()) {
                  // gather total of purchase and subtract it from your credits.

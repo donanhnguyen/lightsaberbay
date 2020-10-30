@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {Link, withRouter} from 'react-router-dom'
 
 class SessionForm extends React.Component {
@@ -9,6 +10,7 @@ class SessionForm extends React.Component {
             password: "",
             credits: 1000,
             cart: [],
+            confirmPassword: '',
           };
     }
 
@@ -19,7 +21,19 @@ class SessionForm extends React.Component {
     handleSubmit (event) {
         event.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        if (user.confirmPassword) {
+            delete user.confirmPassword;
+        }
+        if (this.props.formType === "signup") {
+            if (this.state.password === this.state.confirmPassword) {
+               this.props.processForm(user); 
+            } else {
+                alert('Passwords do not match!');
+            }
+        } else {
+            this.props.processForm(user); 
+
+        }
     }
 
     navLink () {
@@ -54,6 +68,15 @@ class SessionForm extends React.Component {
         }   
     }
 
+    confirmCurrentPassword () {
+        if (this.props.formType === "signup") {
+            return <div>
+                    <label>Confirm Password</label>
+                    <input ref='confirmCurrentPassword' type='password' value={this.state.confirmPassword} onChange={this.update('confirmPassword')}/><br/><br/>
+                </div>
+        }
+    }
+
     render () {
         return (
             <div class="session-form-container session-form-background">
@@ -68,6 +91,9 @@ class SessionForm extends React.Component {
                         <label>Password</label>
                         <input type='password' value={this.state.password} onChange={this.update('password')}/>
                             <br /><br />
+
+                        {this.confirmCurrentPassword()}
+
                         <input class='session-submit-button' type="submit" value="Submit" />
                     </form>
                 </div>

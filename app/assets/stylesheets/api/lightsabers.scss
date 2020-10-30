@@ -514,6 +514,11 @@
   box-shadow: 1px 1px 1px 1px gray;
   background: radial-gradient(rgb(235, 235, 235), rgb(194, 194, 194));
   color: black;
+  animation: fadein 2.2s;
+  -moz-animation: fadein 2.2s; /* Firefox */
+  -webkit-animation: fadein 2.2s; /* Safari and Chrome */
+  -o-animation: fadein 2.2s; /* Opera */
+  z-index: 1;
 }
 .lightsaber-in-cart-item{
   border: 1px solid rgb(182, 182, 182);
