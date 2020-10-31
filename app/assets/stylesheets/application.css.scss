@@ -23,16 +23,17 @@ ul {
     margin: 0;
 }
 body {
-    font-family: 'Pathway Gothic One', sans-serif;
+    font-family: 'Gruppo';
     margin: 0;
 }
 button {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Gruppo';
     font-size: 180px;
     cursor: pointer;
 }
 label {
     padding: 7px;
+    font-size: 20px;
 }
 input[type='text'], input[type='password'] {
     font-size: 20px;
@@ -66,6 +67,7 @@ a:hover {
     font-size: 24px;
     width: 100%;
     color: gray; 
+    padding: 7px;
     border-top: 1px solid rgb(126, 126, 126);
     border-bottom: 1px solid rgb(126, 126, 126);
     background-image: linear-gradient(to bottom right, rgb(7, 7, 7), rgb(72, 113, 167));
@@ -80,7 +82,7 @@ a:hover {
     float: right;
 }
 .tc-link {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Gruppo';
     font-size: 21px;
 }
 .nav-bar-list {
@@ -111,9 +113,9 @@ a:hover {
 }
 .greeting-logged-in {
     margin-left: 5px;
-    font-size: 17px;
+    font-size: 25px;
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-family: 'Gruppo';
 }
 .greeting-container {
     background: image-url('lightsabers.jpg') rgb(138, 169, 208);

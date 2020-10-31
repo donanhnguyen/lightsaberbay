@@ -88,9 +88,9 @@
     margin-top: 10px;
     margin-bottom: 10px;
     background-size: 100% 100%;
-    font-size: 8px;
+    font-size: 9px;
     text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Gruppo';
 }
 .lightsaber-item:hover {
     opacity: 1.0;
@@ -115,7 +115,7 @@
 
 .buy-button {
     padding: 5px;
-    font-size: 15px;
+    font-size: 17px;
     border-radius: 5px;
     width: 100%;
     color: white;
@@ -131,7 +131,7 @@
 
 .inventory-lightsaber-button {
     padding: 3px;
-    font-size: 14px;
+    font-size: 16px;
     border-radius: 5px;
     width: 100%;
     color: white;
@@ -167,7 +167,7 @@
 }
 .toggle-read-button {
     padding: 7px;
-    font-size: 15px;
+    font-size: 16px;
     border-radius: 5px;
     color: white;
     background-color: rgb(24, 74, 150);
@@ -368,10 +368,10 @@
   ///highlights
 #highlightsh1{
     text-align: center;
-    font-size: 30px;
+    font-size: 33px;
     -webkit-animation: breathing 2.0s ease-out infinite normal;
     animation: breathing 2.0s ease-out infinite normal;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Gruppo';
     color: rgb(98, 234, 252);
     -webkit-font-smoothing: antialiased; 
     text-align: center;
@@ -395,9 +395,9 @@
     opacity: 0.80;
     margin: 0 auto;
     background-size: 100% 100%;
-    font-size: 8px;
+    font-size: 10px;
     text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Gruppo';
 }
 .lightsaber-highlight-item:hover {
     opacity: 1.0;
@@ -500,7 +500,7 @@
 }
 .add-to-cart-button {
   padding: 5px;
-  font-size: 15px;
+  font-size: 17px;
   border-radius: 5px;
   width: 100%;
   color: white;
@@ -533,14 +533,14 @@
   background-size: 100% 100%;
   font-size: 8px;
   text-align: center;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Gruppo';
 }
 .lightsaber-in-cart-item:hover {
   opacity: 1.0;
 }
 .remove-from-cart-button {
   padding: 5px;
-  font-size: 15px;
+  font-size: 18px;
   border-radius: 5px;
   width: 100%;
   color: white;
