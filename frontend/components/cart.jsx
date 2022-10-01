@@ -141,7 +141,7 @@ export default function Cart() {
 
         var newUsersCreditsAmount = {...userState, credits: userState.credits - calculatedTotal()};
 
-        if (!cartState) {
+        if (!cartState || cartState.length === 0) {
             alert("There is nothing in your cart.")
             return;
         }
@@ -181,6 +181,7 @@ export default function Cart() {
                     sendMessageToSeller(messageToSellerObject, currentSaber.user_id)
                     //
                     // dispatch in order to empty out the cart, so the UI displays empty cart.
+                    localStorage.setItem('Cart', JSON.stringify([]));
                     cartDispatch({type: 'emptyOutCart'});
                     //
                 }
