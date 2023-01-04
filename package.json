@@ -1,6 +1,9 @@
 {
   "name": "lightsaberbay",
   "version": "1.0.0",
+  "engines": {
+    "node": "9.2.1"
+  },
   "description": "",
   "main": "index.js",
   "directories": {
