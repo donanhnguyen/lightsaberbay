@@ -34,7 +34,7 @@
     "webpack": "webpack --watch",
     "webpack:deploy": "webpack --config=webpack.config.js -p",
     "heroku-postbuild": "npm run webpack:deploy",
-    "start": "webpack --watch & rails server"
+    "start": "PORT=4000 react-scripts start"
   },
   "repository": {
     "type": "git",
