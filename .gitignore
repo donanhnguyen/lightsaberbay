@@ -21,3 +21,4 @@
 # Ignore bundles
 bundle.js
 bundle.js.map
+/config/master.key
