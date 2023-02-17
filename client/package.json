@@ -35,7 +35,7 @@
       "webpack:deploy": "webpack --config=webpack.config.js -p",
       "heroku-postbuild": "npm run webpack:deploy",
       "start": "PORT=4000 react-scripts start",
-      "build": "npm install --prefix client && npm run build --prefix client"
+      "build": "npm install && npm run build"
     },
     "repository": {
       "type": "git",
