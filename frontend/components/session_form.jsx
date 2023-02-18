@@ -14,9 +14,6 @@ class SessionForm extends React.Component {
           };
     }
 
-    componentWillMount () {
-        this.props.errors = [];
-    }
 
     handleSubmit (event) {
         event.preventDefault();
