@@ -7,7 +7,7 @@ bundle install
 rm -rf public
 # build
 npm install
-npm run build
+webpack --watch
 # migrate
 bundle exec rake assets:precompile
 bundle exec rake assets:clean
