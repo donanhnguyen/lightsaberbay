@@ -35,7 +35,7 @@
     "webpack:deploy": "webpack --config=webpack.config.js -p",
     "heroku-postbuild": "npm run webpack:deploy",
     "start": "webpack serve --open --config webpack.dev.js",
-    "build:dev": "webpack --config webpack.dev.js"
+    "build": "webpack --config webpack.prod.js"
   },
   "repository": {
     "type": "git",
