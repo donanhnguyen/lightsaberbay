@@ -34,7 +34,8 @@
     "webpack": "webpack --watch",
     "webpack:deploy": "webpack --config=webpack.config.js -p",
     "heroku-postbuild": "npm run webpack:deploy",
-    "start": "PORT=4000 react-scripts start"
+    "start": "bundle exec puma -C config/puma.rb",
+    "build": "./bin/render-build.sh"
   },
   "repository": {
     "type": "git",
