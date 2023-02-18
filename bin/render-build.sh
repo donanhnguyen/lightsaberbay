@@ -6,7 +6,7 @@ bundle install
 # clean
 rm -rf public
 # build
-npm install && npm run build
+npm install
 # migrate
 bundle exec rake db:migrate
 # postbuild
