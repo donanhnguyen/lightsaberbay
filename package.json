@@ -10,11 +10,11 @@
     "lib": "lib"
   },
   "dependencies": {
-    "@babel/core": "^7.20.12",
+    "@babel/core": "^7.21.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "babel-loader": "^7.1.5",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
     "express": "^4.18.2",
     "lodash": "^4.17.11",
     "npm": "^6.14.8",
@@ -49,11 +49,9 @@
   },
   "homepage": "https://github.com/thedonwind69/lightsaberbay#readme",
   "devDependencies": {
-    "@babel/core": "^7.20.12",
     "@babel/node": "^7.20.7",
-    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-react": "^7.18.6",
+    "@babel/plugin-transform-react-jsx": "^7.21.0",
+    "babel-core": "^7.0.0-bridge.0",
     "webpack-merge": "^5.8.0"
   }
 }
