@@ -35,7 +35,7 @@ gem 'jquery-rails'
 
 gem 'bootstrap-sass'
 gem 'psych', '< 4'
-gem 'webpacker', '~> 5.x'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
