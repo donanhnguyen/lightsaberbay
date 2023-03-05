@@ -7,7 +7,8 @@ import {
     HashRouter,
     withRouter
   } from 'react-router-dom';
-
+ 
+  
   class Nav extends React.Component {
 
     constructor(props){
@@ -15,13 +16,11 @@ import {
     }
 
     logout () {
+        localStorage.clear()
         this.props.logout();
-        this.props.history.push('/');
-        localStorage.clear();
     }
 
     render () {
-    
         if (this.props.currentUser) {
             return (
                     <div class="nav-bar-container">
