@@ -1,4 +1,4 @@
-import React, {useReducer, useEffect} from 'react';
+import React, {useReducer, useEffect, useState} from 'react';
 import * as UserAPIUtil from '../util/user_api_util';
 import * as MessageAPIUtil from '../util/message_api_util';
 
@@ -33,10 +33,27 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
     var lightsaberDate = lightsaber.updated_at.split("")
     var displayLightsaberDate = lightsaberDate.slice(5, 7).join("") + "-" + lightsaberDate.slice(8, 10).join("") + "-" + lightsaberDate.slice(0, 4).join("");
     var [otherUserState, otherUserDispatch] = useReducer(otherUserReducer);
+    var [isItInTheCartOrNotState, setInTheCartState] = useState(false);
 
     useEffect(() => {
         fetchOtherUser(lightsaber.user_id, otherUserDispatch);
     }, [])
+
+    useEffect(() => {
+        if (localStorage.getItem('Cart')) {
+           var clientsArr = JSON.parse(localStorage.getItem('Cart'));
+           var found = false;
+            for (var i = 0; i < clientsArr.length; i++) {
+                if (clientsArr[i].id === lightsaber.id) {
+                    found = true;
+                    break;
+                }
+            }
+           if (found) {
+               setInTheCartState(true);
+           }
+        }
+    }, [isItInTheCartOrNotState])
 
     function handleBuyLightsaber () {
         var lightsaberState1 = {...lightsaber, user_id: userState.id, forsale: false};
@@ -90,6 +107,7 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
             }
            if (found) {
                alert("You've already added that item to your cart!");
+               setInTheCartState(true);
            } else {
                clientsArr.push(lightsaber);
                localStorage.setItem('Cart', JSON.stringify(clientsArr));
@@ -106,6 +124,12 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
         }
     }
 
+    const alreadyInCartOrNot = () => {
+        if (isItInTheCartOrNotState) {
+            return <h1 class='your-listing'>Already in cart!</h1>
+        }
+    }
+
     return (
         <div class={`lightsaber-item ${lightsaber.color + lightsaber.style}`}>
             <h1>{lightsaber.name}</h1>
@@ -118,6 +142,9 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
             </div>
             <div>
                 {addToCartButtonOrNot()}
+            </div>
+            <div>
+                {alreadyInCartOrNot()}
             </div>
         </div>
     )

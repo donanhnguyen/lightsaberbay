@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     useHistory,
     Link,
-    useNavigate
   } from 'react-router-dom';
 
 function RealNav (props) {
