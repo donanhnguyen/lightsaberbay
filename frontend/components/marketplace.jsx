@@ -117,6 +117,7 @@ export default function Marketplace(props) {
                         userDispatch={userDispatch}
                         userState={userState}
                         updateUsersCredits={updateUsersCredits}
+                        setCartInfoState={props.setCartInfoState}
                     />
                     </div>
                 )

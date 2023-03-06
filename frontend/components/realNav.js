@@ -27,7 +27,7 @@ function RealNav (props) {
                             <li> <Link class={'nav-link nav-link-hover'} to="/marketplace">Marketplace</Link></li>   
                             <li> <Link class={'nav-link nav-link-hover'} to="/inventory">Inventory</Link></li>          
                             <li> <Link class={'nav-link nav-link-hover'} to="/messages">Messages</Link></li>
-                            <li> <Link class={'nav-link nav-link-hover'} to="/cart">Cart</Link></li>         
+                            <li> <Link class={'nav-link nav-link-hover'} to="/cart">Cart <p class='cart-item-number'>{props.cartInfoState}</p></Link></li>         
                             <li>
                                 <button class={'logout-button'} onClick={logout}>Log Out</button>
                             </li>

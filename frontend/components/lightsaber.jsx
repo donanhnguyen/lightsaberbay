@@ -29,7 +29,7 @@ function sendMessageToSeller (message, user_id) {
     MessageAPIUtil.createMessage(message, user_id);
 }
 
-export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDispatch, userState, updateUsersCredits}) {
+export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDispatch, userState, updateUsersCredits, setCartInfoState}) {
     var lightsaberDate = lightsaber.updated_at.split("")
     var displayLightsaberDate = lightsaberDate.slice(5, 7).join("") + "-" + lightsaberDate.slice(8, 10).join("") + "-" + lightsaberDate.slice(0, 4).join("");
     var [otherUserState, otherUserDispatch] = useReducer(otherUserReducer);
@@ -113,6 +113,10 @@ export default function Lightsaber({lightsaber, buyLightsaber, dispatch, userDis
                localStorage.setItem('Cart', JSON.stringify(clientsArr));
                alert(`Added ${lightsaber.name} to your shopping cart!`);
            }
+        }
+        if (localStorage.getItem('Cart')) {
+            var theCart = JSON.parse(localStorage.getItem('Cart'));
+            setCartInfoState(theCart.length);
         }
     }
 

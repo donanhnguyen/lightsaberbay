@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useState} from 'react';
 import {Route} from 'react-router-dom';
 import NavContainer from './nav_container';
 import Footer from './footer';
@@ -10,31 +10,33 @@ import Inventory from './inventory';
 import Messages from './messages';
 import Cart from './cart';
 
-class App extends React.Component {
+function App () {
 
-    constructor(props) {
-        super(props);
-    }
+    var [cartInfoState, setCartInfoState] = useState(0);
 
-    render () {
-        return (
-            <div>
-                <NavContainer />
-                <div id="all-other-content">
-                   <Route exact path="/" component={GreetingContainer} />
-                    <Route path="/marketplace" component={Marketplace} />
+    return (
+        <div>
+                    <NavContainer cartInfoState={cartInfoState}/>
+            <div id="all-other-content">
+                    <Route exact path="/" component={GreetingContainer} />
+                    
+                    <Route path='/marketplace'><Marketplace setCartInfoState={setCartInfoState}/></Route>
+
                     <Route path="/Inventory" component={Inventory} />
+
                     <Route path="/messages" component={Messages} />
-                    <Route path='/cart' component={Cart} />
+
+                    <Route path='/cart'><Cart setCartInfoState={setCartInfoState}/></Route>
+
                     <AuthRoute path="/login" component={SessionFormContainer} />
+
                     <AuthRoute path="/signup" component={SessionFormContainer} />
+
                     <div class='clearfix'></div>
                     <Footer /> 
-                </div>
-                
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default App;

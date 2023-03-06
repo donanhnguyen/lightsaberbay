@@ -256,6 +256,15 @@ a:hover {
     cursor: pointer;
     border: 1px solid black;
 }
+.cart-item-number {
+    display: inline;
+    background-color: rgb(255, 0, 0);
+    border-radius: 30px;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
 
 //-media queries
 @media screen and (min-width: 2000px) {

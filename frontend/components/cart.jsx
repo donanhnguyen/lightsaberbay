@@ -64,7 +64,7 @@ function buyLightsaber (lightsaber, lightsaber_id) {
     LightsaberAPIUtil.buyLightsaber(lightsaber, lightsaber_id);
 }
 
-export default function Cart() {
+export default function Cart(props) {
     var localStorageCurrentUser = JSON.parse(localStorage.getItem("currentLoggedInUser"));
     var cartArray = JSON.parse(localStorage.getItem('Cart'));
     var [userState, userDispatch] = useReducer(userReducer);
@@ -135,6 +135,9 @@ export default function Cart() {
         })
         localStorage.setItem('Cart', JSON.stringify(clientsArr));
         cartDispatch({type: 'updateUsersCartAfterRemovingOne', payload: lightsaber});
+        if (localStorage.getItem('Cart')) {
+            props.setCartInfoState(clientsArr.length);
+        }
     }
 
     function handlePlaceOrder () {
@@ -182,6 +185,7 @@ export default function Cart() {
                     //
                     // dispatch in order to empty out the cart, so the UI displays empty cart.
                     localStorage.setItem('Cart', JSON.stringify([]));
+                    props.setCartInfoState(0);
                     cartDispatch({type: 'emptyOutCart'});
                     //
                 }
