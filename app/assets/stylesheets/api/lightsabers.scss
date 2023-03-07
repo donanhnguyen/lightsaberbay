@@ -379,7 +379,8 @@
 
 #highlights {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     padding: 50px;
     animation: fadein 1.2s;
     -moz-animation: fadein 1.2s; /* Firefox */
@@ -571,4 +572,9 @@
   left: 25%;
   font-size: 13px;
   text-align: center;
+}
+
+
+@media screen and (max-width: 500px) {
+
 }
