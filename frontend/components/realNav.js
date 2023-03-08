@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     useHistory,
     Link,
@@ -6,7 +6,12 @@ import {
 
 function RealNav (props) {
 
+    const [pathState, setPathState] = useState("/");
     const history = useHistory();
+
+    function changePathState () {
+        setPathState(history.location.pathname);
+    }
 
     function logout() {
         navigate();
@@ -23,11 +28,11 @@ function RealNav (props) {
                 <div class="nav-bar-container">
 
                         <ul class="nav-bar-list">
-                            <li><Link class={'tc-link nav-link nav-link-hover'} to="/">Home</Link></li>
-                            <li> <Link class={'nav-link nav-link-hover'} to="/marketplace">Marketplace</Link></li>   
-                            <li> <Link class={'nav-link nav-link-hover'} to="/inventory">Inventory</Link></li>          
-                            <li> <Link class={'nav-link nav-link-hover'} to="/messages">Messages</Link></li>
-                            <li> <Link class={'nav-link nav-link-hover'} to="/cart">Cart <p class='cart-item-number'>{props.cartInfoState}</p></Link></li>         
+                            <li onClick={changePathState}><Link class={`tc-link nav-link nav-link-hover ${pathState === "/" ? 'nav-link-chosen' : ''}     `} to="/">Home</Link></li>
+                            <li onClick={changePathState}> <Link class={`nav-link nav-link-hover ${pathState === "/marketplace" ? 'nav-link-chosen' : ''}`} to="/marketplace">Marketplace</Link></li>   
+                            <li onClick={changePathState}> <Link class={`nav-link nav-link-hover ${pathState === "/inventory" ? 'nav-link-chosen' : ''}`} to="/inventory">Inventory</Link></li>          
+                            <li onClick={changePathState}> <Link class={`nav-link nav-link-hover ${pathState === "/messages" ? 'nav-link-chosen' : ''}`} to="/messages">Messages</Link></li>
+                            <li onClick={changePathState}> <Link class={`nav-link nav-link-hover ${pathState === "/cart" ? 'nav-link-chosen' : ''}`} to="/cart">Cart <p class='cart-item-number'>{props.cartInfoState}</p></Link></li>         
                             <li>
                                 <button class={'logout-button'} onClick={logout}>Log Out</button>
                             </li>
@@ -41,13 +46,13 @@ function RealNav (props) {
                 <div class="nav-bar-container">
             
                         <ul class="nav-bar-list">
-                            <li> <Link class={'tc-link nav-link nav-link-hover'} to="/">Home</Link> </li>
-                            <li> <Link class={'nav-link nav-link-hover'} to="/login">Marketplace</Link></li>   
-                            <li>
-                                <Link class={'nav-link nav-link-hover'} to="/login">Log In</Link>
+                            <li onClick={changePathState}> <Link class={`tc-link nav-link nav-link-hover  ${pathState === "/" ? 'nav-link-chosen' : ''}     `} to="/">Home</Link> </li>
+                            <li onClick={changePathState}> <Link class={`nav-link nav-link-hover ${pathState === "/marketplace" ? 'nav-link-chosen' : ''}`} to="/login">Marketplace</Link></li>   
+                            <li onClick={changePathState}>
+                                <Link class={`nav-link nav-link-hover ${pathState === "/login" ? 'nav-link-chosen' : ''}`} to="/login">Log In</Link>
                             </li>
-                            <li>
-                                <Link class={'nav-link nav-link-hover'} to="/signup">Sign Up</Link>
+                            <li onClick={changePathState}>
+                                <Link class={`nav-link nav-link-hover ${pathState === "/signup" ? 'nav-link-chosen' : ''}`} to="/signup">Sign Up</Link>
                             </li>
                         </ul>
             
