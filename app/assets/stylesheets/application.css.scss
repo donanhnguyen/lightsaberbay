@@ -285,12 +285,13 @@ a:hover {
     }
     .nav-bar-list {
         padding: 0;
-        display: grid;
-        grid-template-columns: 33.3% 33.3% 33.3%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
         margin: 0 auto;
     }
     .nav-bar-list li {
-        padding: 12px;
+        padding: 4px;
         text-align: center;
     }
 }
@@ -316,7 +317,7 @@ a:hover {
         font-size: 14px;
     }
     .nav-bar-container, .tc-link {
-        font-size: 18px;
+        font-size: 13px;
     }
 }
 

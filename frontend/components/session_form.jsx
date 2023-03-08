@@ -64,6 +64,9 @@ class SessionForm extends React.Component {
             );
         }   
     }
+    componentWillUnmount () {
+        this.props.clearErrorsFunction();
+    }
 
     confirmCurrentPassword () {
         if (this.props.formType === "signup") {
