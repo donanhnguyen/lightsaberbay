@@ -10,13 +10,63 @@ Imagine an e-commerce application for lightsabers. You can create an account and
 
 I wanted to make this app because unlike my other projects, I have not made an app that had user-to-user interaction. In this case, this app has that in the form of messages sent to users when someone purchases their item. Also, I was always fascinated by shopping applications and curious to know the engines behind it.
 
-<h1>How to use</h1>
+<h1>Languages and tools used:</h1>
+
+<div display=flex>
+  <img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/javascript/javascript-original.svg' width=40 height=40/>
+  <img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/react/react-original-wordmark.svg' width=40 height=40/>
+  <img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/ruby/ruby-original-wordmark.svg' width=40 height=40/>
+  <img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/rails/rails-original-wordmark.svg' width=40 height=40/>
+  <img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/html5/html5-original-wordmark.svg' width=40 height=40/>
+  <img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/css3/css3-original-wordmark.svg' width=40 height=40/>
+  <img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/postgresql/postgresql-original-wordmark.svg' width=40 height=40/>
+  <img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/webpack/webpack-original-wordmark.svg' width=40 height=40/>
+  <img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/git/git-original-wordmark.svg' width=40 height=40/>
+  <img src='https://intellyx.com/wp-content/uploads/2019/08/Render-cloud-intellyx-BC-logo.png' width=40 height=40/>
+</div>
+
+<br>
+
+<h1>How to run project locally:</h1>
+
+First, open up your VSCODE editor and go to the folder where you want to clone the project into.
+
+Then, run:
+
+```
+git clone https://github.com/thedonwind69/lightsaberbay.git
+```
+
+Then, change directory into the project:
+
+```
+cd lightsaberbay
+```
+
+You should now be in the project folder. To start the server, run rails server command:
+
+```
+rails s
+```
+
+You should now see the server starting up locally.
+
+<br>
+<div align='center'>
+    <img src='./screenshots/ss20.png' width=100%/>
+</div>
+<br>
+
+Open up your web browser and go to http://localhost:3000/, and you shall see the application running locally.
+
+<br>
+<h1>How to use:</h1>
 
 First, you will be brought to the greeting/landing page. It will display the name of the app and below, list a couple of highlights of the most recently listed items.
 
 <br>
 <div align='center'>
-    <img src='./screenshots/ss1.png' width=600px/>
+    <img src='./screenshots/ss1.png' width=100%/>
 </div>
 <br>
 
@@ -24,7 +74,7 @@ On the top of the page, there is a nav bar that will take you to the marketplace
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss2.png' width=600px/>
+  <img src='./screenshots/ss2.png' width=100%/>
 </div>
 <br>
 
@@ -34,7 +84,7 @@ After a successful login, you will be brought back to the greeting page where yo
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss3.png' width=600px/>
+  <img src='./screenshots/ss3.png' width=100%/>
 </div>
 <br>
 
@@ -42,7 +92,7 @@ Now, when you click the "marketplace" link in the nav bar, you will see the meat
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss4.png' width=600px/>
+  <img src='./screenshots/ss4.png' width=100%/>
 </div>
 <br>
 
@@ -54,7 +104,7 @@ As you can see below, the filters of "red", "single-bladed" only, and sorted fro
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss5.png' width=600px/>
+  <img src='./screenshots/ss5.png' width=100%/>
 </div>
 <br>
 
@@ -62,7 +112,7 @@ You can now choose to purchase an item directly through the "Buy now" button, wh
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss6.png' width=600px/>
+  <img src='./screenshots/ss6.png' width=100%/>
 </div>
 <br>
 
@@ -72,7 +122,7 @@ As you can see, Darth Malgus' lightsaber is now in our inventory under the "Not 
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss7.png' width=600px/>
+  <img src='./screenshots/ss7.png' width=100%/>
 </div>
 <br>
 
@@ -82,7 +132,7 @@ Here, you can edit the price of the item you just bought, and then list it back 
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss8.png' width=600px/>
+  <img src='./screenshots/ss8.png' width=100%/>
 </div>
 <br>
 
@@ -92,7 +142,7 @@ Simply go back to the marketplace tab and click the "Add to cart" button on the 
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss9.png' width=600px/>
+  <img src='./screenshots/ss9.png' width=100%/>
 </div>
 <br>
 
@@ -100,7 +150,7 @@ In this case, I added 2 items to my cart and as you can see, the "Cart" tab in t
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss10.png' width=600px/>
+  <img src='./screenshots/ss10.png' width=100%/>
 </div>
 <br>
 
@@ -108,7 +158,7 @@ Now, let's go to our "Cart" tab.
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss11.png' width=600px/>
+  <img src='./screenshots/ss11.png' width=100%/>
 </div>
 <br>
 
@@ -122,7 +172,7 @@ Like with any big purchase, it will as us if we are certain.
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss12.png' width=600px/>
+  <img src='./screenshots/ss12.png' width=100%/>
 </div>
 <br>
 
@@ -130,7 +180,7 @@ Once the purchase is completed, our cart will be empty:
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss13.png' width=600px/>
+  <img src='./screenshots/ss13.png' width=100%/>
 </div>
 <br>
 
@@ -138,7 +188,7 @@ Now, let's go back to our inventory again and see the 2 items we've just purchas
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss14.png' width=600px/>
+  <img src='./screenshots/ss14.png' width=100%/>
 </div>
 <br>
 
@@ -146,7 +196,7 @@ The two blue lightsabers we've just purchased are now in our inventory. We can n
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss15.png' width=600px/>
+  <img src='./screenshots/ss15.png' width=100%/>
 </div>
 <br>
 
@@ -158,15 +208,15 @@ Log out button on the nav bar:
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss16.png' width=600px/>
+  <img src='./screenshots/ss16.png' width=100%/>
 </div>
 <br>
 
-Let's log into Ki's account. Once we do, we can see that we are greeting with a notification that we have 3 unread messages.
+Let's log into Ki's account. Once we do, we can see that we're greeted with a notification that we have 3 unread messages.
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss17.png' width=600px/>
+  <img src='./screenshots/ss17.png' width=100%/>
 </div>
 <br>
 
@@ -174,33 +224,20 @@ Now, let's go to our "Messages" tab in the nav bar.
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss18.png' width=600px/>
+  <img src='./screenshots/ss18.png' width=100%/>
 </div>
 <br>
 As expected, we see a list of ordered messages, from most recent to oldest, and the top message is that of Don purchasing our item of "Leia's Training Lightsaber" for 5 credits.
 
 We can choose to mark them as read or leave them as unread, and it will properly update our notification message on the greeting page.
 
-In this case, I will mark them all as read so clear our my inbox, so that I don't see any notifications.
+In this case, I will mark them all as read to clear out my inbox, so that I don't see any notifications.
 
 <br>
 <div align="center">
-  <img src='./screenshots/ss19.png' width=600px/>
+  <img src='./screenshots/ss19.png' width=100%/>
 </div>
 
 <br>
 Once done with your shopping experience, you can log out and return another time.
 <br><br>
-
-<h1>Languages and tools used:</h1>
-
-<img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/javascript/javascript-original.svg' width=40 height=40/>
-<img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/react/react-original-wordmark.svg' width=40 height=40/>
-<img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/ruby/ruby-original-wordmark.svg' width=40 height=40/>
-<img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/rails/rails-original-wordmark.svg' width=40 height=40/>
-<img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/html5/html5-original-wordmark.svg' width=40 height=40/>
-<img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/css3/css3-original-wordmark.svg' width=40 height=40/>
-<img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/postgresql/postgresql-original-wordmark.svg' width=40 height=40/>
-<img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/webpack/webpack-original-wordmark.svg' width=40 height=40/>
-<img src='https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/git/git-original-wordmark.svg' width=40 height=40/>
-<img src='https://intellyx.com/wp-content/uploads/2019/08/Render-cloud-intellyx-BC-logo.png' width=40 height=40/>
