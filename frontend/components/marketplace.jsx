@@ -70,7 +70,8 @@ export default function Marketplace(props) {
         color: "None",
         style: "None",
     })
-    var [sortState, setSortState] = useState({sortBy: null})
+    var [sortState, setSortState] = useState({sortBy: null});
+    var [priceFilterState, setPriceFilterState] = useState(null);
 
     useEffect(() => {
         if (localStorageCurrentUser) {
@@ -151,6 +152,9 @@ export default function Marketplace(props) {
                 endArray = state.sort((a, b) => b.price - a.price);
             }
             var endArray1 = endArray.filter((saber) => saber.forsale);
+            if (priceFilterState !== null && priceFilterState > 0 && priceFilterState !== NaN)  {
+                endArray1 = endArray1.filter((lightsaber) => lightsaber.price <= priceFilterState);
+            }
             return mapLightsabers(endArray1);
         };
 
@@ -209,15 +213,21 @@ export default function Marketplace(props) {
         } else if (sortState.sortBy === "PriceHighToLow") {
             lastArrayAfterFiltered = newArray.sort((a, b) => b.price - a.price);
         }
-
+        if (priceFilterState !== null && priceFilterState > 0 && priceFilterState !== NaN) {
+            lastArrayAfterFiltered = lastArrayAfterFiltered.filter((lightsaber) => lightsaber.price <= priceFilterState);
+        }
         return mapLightsabers(lastArrayAfterFiltered);
-        
     };
 
     function displayNumberOfResults () {
         if (displayAllLightsabersAfterFiltered().length > 0) {
             return <h1>Displaying {displayAllLightsabersAfterFiltered().length} results:</h1>
         }
+    }
+
+    function changePriceMax (e) {
+        e.persist();
+        setPriceFilterState(parseInt(e.target.value))
     }
 
     if (localStorageCurrentUser) {
@@ -257,6 +267,11 @@ export default function Marketplace(props) {
                         <option value="PriceLowToHigh">Price: Low to High</option> 
                         <option value="PriceHighToLow">Price: High to Low</option>
                 </select> 
+            </div>
+
+            <div class='price-filters'>
+                <label for='price-max'>Price Max</label>
+                <input type='number' onChange={changePriceMax}  id='price-max'></input>
             </div>
 
             <div class="clearfix"></div>
