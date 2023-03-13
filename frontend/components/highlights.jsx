@@ -49,7 +49,7 @@ export default function Highlights() {
                 return (<div class={`lightsaber-highlight-item ${lightsaber.color + lightsaber.style}`}>
                     <h1>{lightsaber.name}</h1>
                     <h1>Seller: {lightsaber.owner}</h1>
-                    <h1 style={{color: 'rgb(89, 213, 250)'}}>{lightsaber.price} Credits</h1>
+                    <h1 class='lightsaber-price' style={{color: 'rgb(89, 213, 250)'}}>{lightsaber.price} Credits</h1>
                     <h1 class='lightsaber-listed-date'>Listed on {displayLightsaberDate}</h1>
                     <Link to="/marketplace"><button class="add-to-cart-button">View In Marketplace</button></Link>
                 </div>)
