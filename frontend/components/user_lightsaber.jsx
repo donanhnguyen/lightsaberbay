@@ -53,7 +53,7 @@ export default function UserLightsaber({updateLightsaberListing, dispatch, light
     return (
         <div class={`lightsaber-item ${lightsaber.color + lightsaber.style}`}>
             <h1>{lightsaber.name}</h1>
-            <h1>{lightsaber.price} Credits</h1>
+            <h1 class='lightsaber-price'>{lightsaber.price} Credits</h1>
 
             <div>
                 {sellOrNotButton()}
