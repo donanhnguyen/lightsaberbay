@@ -4,11 +4,11 @@
 
 <h1>Description</h1>
 
-Imagine an e-commerce application for lightsabers. You can create an account and be provided with 1000 credits to use to purchase several different styles of sabers on a marketplace. Once you do, you will be able to list them on the marketplace as well at your desired price. Upon successful purchase, you will be notified via message when someone purchases your item and also be supplied with the amount of credits you asked for. 
+LightsaberBay is a full-stack shopping application where users can create an account and be provided with 1000 credits to purchase several different styles of sabers on a marketplace. Once they do, they will be able to list them on the marketplace as well at their desired price. Upon successful purchase, they will be notified via message when someone purchases their item and also be supplied with the amount of credits they asked for. 
 
 <h1>Motivation</h1>
 
-I wanted to make this app because unlike my other projects, I have not made an app that had user-to-user interaction. In this case, this app has that in the form of messages sent to users when someone purchases their item. Also, I was always fascinated by shopping applications and curious to know the engines behind it.
+I wanted to make this app because unlike my other projects, I have not made an app that had user-to-user interaction. In this case, this app consists of user-to-user interaction in the form of messages sent to users when someone purchases their item. Also, I was always fascinated by shopping applications and curious to know the engines behind it.
 
 <h1>Languages and tools used:</h1>
 
