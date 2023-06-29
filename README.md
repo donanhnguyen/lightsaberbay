@@ -25,39 +25,6 @@ I wanted to make this app because unlike my other projects, I have not made an a
   <img src='https://intellyx.com/wp-content/uploads/2019/08/Render-cloud-intellyx-BC-logo.png' width=40 height=40/>
 </div>
 
-<br>
-
-<h1>How to run project locally:</h1>
-
-First, open up your VSCODE editor and go to the folder where you want to clone the project into.
-
-Then, run:
-
-```
-git clone https://github.com/thedonwind69/lightsaberbay.git
-```
-
-Then, change directory into the project:
-
-```
-cd lightsaberbay
-```
-
-You should now be in the project folder. To start the server, run rails server command:
-
-```
-rails s
-```
-
-You should now see the server starting up locally.
-
-<br>
-<div align='center'>
-    <img src='./screenshots/ss20.png' width=100%/>
-</div>
-<br>
-
-Open up your web browser and go to http://localhost:3000/, and you shall see the application running locally.
 
 <br>
 <h1>How to use:</h1>
