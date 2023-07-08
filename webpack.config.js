@@ -26,4 +26,5 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", "*", ".jpg"]
   }
+  
 };

@@ -1,3 +1,7 @@
+// @import 'tailwindcss/base';
+// @import 'tailwindcss/components';
+// @import 'tailwindcss/utilities';
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -23,11 +27,11 @@ ul {
     margin: 0;
 }
 body {
-    font-family: 'Gruppo';
+    font-family: 'Chivo';
     margin: 0;
 }
 button {
-    font-family: 'Gruppo';
+    font-family: 'Chivo';
     font-size: 180px;
     cursor: pointer;
 }
@@ -82,7 +86,7 @@ a:hover {
     float: right;
 }
 .tc-link {
-    font-family: 'Gruppo';
+    font-family: 'Chivo';
     font-size: 21px;
 }
 .nav-bar-list {
@@ -119,7 +123,7 @@ a:hover {
     margin-left: 5px;
     font-size: 25px;
     text-align: center;
-   font-family: 'Gruppo';
+   font-family: 'Chivo';
 }
 .greeting-container {
     background: image-url('lightsabersgif.gif') rgb(138, 169, 208);
@@ -198,7 +202,7 @@ a:hover {
 }
 
 .city-highlights {
-    font-family: 'Didact Gothic';
+    font-family: 'Chivo';
     text-align: center;
     color: rgb(108, 154, 238);
     margin: 0;

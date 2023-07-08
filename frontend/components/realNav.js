@@ -32,7 +32,7 @@ function RealNav (props) {
                             <li onClick={changePathState}> <Link class={`nav-link nav-link-hover ${pathState === "/marketplace" ? 'nav-link-chosen' : ''}`} to="/marketplace">Marketplace</Link></li>   
                             <li onClick={changePathState}> <Link class={`nav-link nav-link-hover ${pathState === "/inventory" ? 'nav-link-chosen' : ''}`} to="/inventory">Inventory</Link></li>          
                             <li onClick={changePathState}> <Link class={`nav-link nav-link-hover ${pathState === "/messages" ? 'nav-link-chosen' : ''}`} to="/messages">Messages</Link></li>
-                            <li onClick={changePathState}> <Link class={`nav-link nav-link-hover ${pathState === "/cart" ? 'nav-link-chosen' : ''}`} to="/cart">Cart <p class='cart-item-number'>{props.cartInfoState}</p></Link></li>         
+                            <li onClick={changePathState}> <Link class={`nav-link nav-link-hover ${pathState === "/cart" ? 'nav-link-chosen' : ''}`} to="/cart"><i class="fa fa-shopping-cart" style={{fontSize:'32px', color: "red"}}></i> Cart <p class='cart-item-number'>{props.cartInfoState}</p></Link></li>         
                             <li>
                                 <button class={'logout-button'} onClick={logout}>Log Out</button>
                             </li>
