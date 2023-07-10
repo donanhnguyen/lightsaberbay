@@ -71,6 +71,10 @@ export default function Cart(props) {
     var [otherUserState, otherUserDispatch] = useReducer(otherUserReducer, []);
     var [cartState, cartDispatch] = useReducer(cartReducer, cartArray);
 
+    // modal
+    var [modalMessage, setModalMessage] = useState("");
+    var [showModal, toggleShowModal] = useState(false);
+
     useEffect(() => {
         if (localStorageCurrentUser) {
             fetchUser(localStorageCurrentUser.id, userDispatch);
@@ -145,7 +149,12 @@ export default function Cart(props) {
         var newUsersCreditsAmount = {...userState, credits: userState.credits - calculatedTotal()};
 
         if (!cartState || cartState.length === 0) {
-            alert("There is nothing in your cart.")
+            toggleShowModal(true);
+            setModalMessage(`There's nothing in your cart.`);
+            setTimeout(() => {
+                toggleShowModal(false);
+                setModalMessage("");
+            }, 1000)
             return;
         }
 
@@ -190,7 +199,12 @@ export default function Cart(props) {
                     //
                 }
             } else {
-                alert("You can't afford this purchase!")
+                toggleShowModal(true);
+                setModalMessage(`You can't afford this purchase!`);
+                setTimeout(() => {
+                        toggleShowModal(false);
+                        setModalMessage("");
+                }, 1000)
             }
         }
        
@@ -198,26 +212,38 @@ export default function Cart(props) {
 
     if (localStorageCurrentUser) {
         return (
-            <div id='cart'>
-                <div id='shopping-cart-left-panel'>
-                    {displayCartItems()}
+            <div>
+                {/* modal */}
+                <div class={`modal ${!showModal ? "hideModal" : ""}  `}>
+                <div class="modal-content">
+                    <h1>{modalMessage}</h1>
+                    {/* <button onClick={() => toggleShowModal(false) } class="modal-close">&times</button> */}
                 </div>
-                <div id='checkout-right-panel'>
-                    
-                    <div class='calculated-total'>
+                </div>
+                {/* modal */}
+                <div id='cart'>
 
-                        {displayOrderDetails()}
-
-                        {displayCalculateTotal()}
-
+                    <div id='shopping-cart-left-panel'>
+                        {displayCartItems()}
                     </div>
-                    
-                    <div class='place-order-button-container'>
-                        <button class='place-order-button' onClick={handlePlaceOrder} >Place Order</button>
+                    <div id='checkout-right-panel'>
+                        
+                        <div class='calculated-total'>
+
+                            {displayOrderDetails()}
+
+                            {displayCalculateTotal()}
+
+                        </div>
+                        
+                        <div class='place-order-button-container'>
+                            <button class='place-order-button' onClick={handlePlaceOrder} >Place Order</button>
+                        </div>
+                        
                     </div>
-                    
                 </div>
             </div>
+            
         )   
     } else {
         return <div>You are not logged in!</div>

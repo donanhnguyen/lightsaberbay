@@ -98,10 +98,6 @@ class SessionForm extends React.Component {
                     </form>
                 </div>
 
-                <div class='session-side-picture'>
-
-                </div>
-
             </div> 
         )
         

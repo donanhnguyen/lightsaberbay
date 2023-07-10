@@ -1,3 +1,76 @@
 // Place all the styles related to the Lightsabers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: #000000;
+    border: 1px solid #fff;
+    padding: 20px;
+    text-align: center;
+    color: rgb(47, 246, 143);
+  }
+  
+  .modal-close {
+    margin-top: 20px;
+    background-color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .modal-close:hover {
+    background-color: #eee;
+  }
+
+  .hideModal {
+    display: none;
+  }
+// modal for confirming
+  .modalForConfirming {
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.501);
+    z-index: 1000;
+  }
+  
+  .modal-content-for-confirming {
+    background-color: #000000;
+    border: 1px solid #fff;
+    padding: 20px;
+    text-align: center;
+    color: rgb(47, 246, 143);
+  }
+  
+  .modal-close-for-confirming {
+    margin-top: 20px;
+    background-color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .modal-close-for0.modal-close-for-confirming {
+    background-color: #eee;
+  }
+
+  .showModal {
+    display: flex;
+  }
+ 

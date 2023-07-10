@@ -73,6 +73,13 @@ export default function Marketplace(props) {
     var [sortState, setSortState] = useState({sortBy: null});
     var [priceFilterState, setPriceFilterState] = useState(null);
 
+    // modal
+    var [modalMessage, setModalMessage] = useState("");
+    var [showModal, toggleShowModal] = useState(false);
+
+    var [confirmModalMessage, setConfirmModalMessage] = useState("");
+    var [showConfirmModal, toggleShowConfirmModal] = useState(false);
+
     useEffect(() => {
         if (localStorageCurrentUser) {
             fetchAllTheLightsabers(dispatch);
@@ -119,6 +126,14 @@ export default function Marketplace(props) {
                         userState={userState}
                         updateUsersCredits={updateUsersCredits}
                         setCartInfoState={props.setCartInfoState}
+                        showModal={showModal}
+                        toggleShowModal={toggleShowModal}
+                        modalMessage={modalMessage}
+                        setModalMessage={setModalMessage}
+                        showConfirmModal={showConfirmModal}
+                        toggleShowConfirmModal={toggleShowConfirmModal}
+                        confirmModalMessage={confirmModalMessage}
+                        setConfirmModalMessage={setConfirmModalMessage}
                     />
                     </div>
                 )
@@ -234,6 +249,15 @@ export default function Marketplace(props) {
         return (
         <div id="marketplace-container">
             <div class="clearfix"></div>
+
+            {/* modal */}
+            <div class={`modal ${!showModal ? "hideModal" : ""}  `}>
+            <div class="modal-content">
+                <h1>{modalMessage}</h1>
+                {/* <button onClick={() => toggleShowModal(false) } class="modal-close">&times</button> */}
+            </div>
+            </div>
+            {/* modal */}
 
             <UserInfo userState={userState}/>
          
