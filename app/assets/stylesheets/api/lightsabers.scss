@@ -180,24 +180,24 @@
 @media screen and (max-width: 800px) {
     .all-lightsabers-container {
         display: grid;
-        grid-template-columns: 33.3% 33.3% 33.3%;
+        grid-template-columns: 50% 50%;
         max-width: 95%;
     }
     
     .lightsaber-item{
         width: 90%;
-        height: 200px;
+        height: auto;
     }
 }
 @media screen and (max-width: 560px) {
     .all-lightsabers-container {
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 100%;
     }
     
     .lightsaber-item{
         width: 95%;
-        height: 200px;
+        height: auto;
     }
 }
 
@@ -527,7 +527,7 @@
   border-radius: 10px;
   width: 100%;
   padding: 5px;
-  height: 200px;
+  height: auto;
   opacity: 0.9;
   margin: 0 auto;
   margin-top: 10px;

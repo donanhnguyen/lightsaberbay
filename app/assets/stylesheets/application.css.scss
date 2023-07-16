@@ -27,11 +27,11 @@ ul {
     margin: 0;
 }
 body {
-    font-family: 'Chivo';
+    font-family: 'Nunito';
     margin: 0;
 }
 button {
-    font-family: 'Chivo';
+    font-family: 'Nunito';
     font-size: 180px;
     cursor: pointer;
 }
@@ -86,7 +86,7 @@ a:hover {
     float: right;
 }
 .tc-link {
-    font-family: 'Chivo';
+    font-family: 'Nunito';
     font-size: 21px;
 }
 .nav-bar-list {
@@ -123,7 +123,7 @@ a:hover {
     margin-left: 5px;
     font-size: 25px;
     text-align: center;
-   font-family: 'Chivo';
+   font-family: 'Nunito';
 }
 .greeting-container {
     background: image-url('lightsabersgif.gif') rgb(138, 169, 208);
@@ -202,7 +202,7 @@ a:hover {
 }
 
 .city-highlights {
-    font-family: 'Chivo';
+    font-family: 'Nunito';
     text-align: center;
     color: rgb(108, 154, 238);
     margin: 0;
@@ -241,8 +241,11 @@ a:hover {
 }
 .lightsaber-price {
     background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    color: red;
+    font-family: 'Nunito';
+    color: rgb(0, 155, 52);
+}
+.lightsaber-name {
+    font-size: 2.5em;
 }
 .highlight-info {
     color: rgb(254, 161, 0);
