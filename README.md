@@ -1,6 +1,6 @@
 # Lightsaber Bay
 
-[Live Link](https://lightsaberbay.onrender.com/#/)
+[Video Link](https://www.youtube.com/watch?v=QLpI4vb20xU)
 
 <h1>Description</h1>
 
